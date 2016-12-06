@@ -4,9 +4,7 @@ var router = express.Router();
 // Default Path
 router.get('/', function (req, res) {});
 
-// 
-router.post('/crystal', function (req, res) {
-	res.send("Hi there, it's me, Crystal")
-})
+// Set Generic Paths for Crystal API
+router.use('/crystal', require('./crystal'))
 
 module.exports = router;

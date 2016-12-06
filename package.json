@@ -1,7 +1,9 @@
 {
   "name": "crystalcoach",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "apiai": "^3.0.3"
+  },
   "repository": {},
   "devDependencies": {
     "body-parser": "^1.15.2",
