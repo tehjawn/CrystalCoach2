@@ -1,0 +1,25 @@
+<h2>Chat</h2>
+
+<div class="">
+  <p> Add new message: </p>
+
+  <div class="row">
+    <form class="">
+      <div class="col-lg-4">
+        <div class="form-group">
+          <input type="text" ng-model="message" class="form-control">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="form-group">
+          <input type="submit" ng-click="addMessage(message); message = null" class="btn btn-primary" value="Send">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<p>Last messages: </p>
+
+<ul>
+  <li ng-repeat="msg in messages"> {{ msg.text }}</li>
+</ul>

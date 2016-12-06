@@ -1,0 +1,72 @@
+
+<div class="row-fluid">
+<div>
+  <h3>Profile</h3>
+
+  {{user.info}}
+
+  <form role="form">
+    <p class="form-group">
+      <label>Account ID</label>
+      <br />{{user.uid}}
+    </p>
+
+    <p class="form-group">
+      <label> Name </label>
+      <input type="text" class="form-control" ng-model="user.name" name="userName">
+    </p>
+    <img ng-src="{{ user.photo }}" width="100" height="100">
+    <p class="form-group">
+      <label> Image profile URL </label>
+      <input type="text" class="form-control" ng-model="user.photo" name="photoUrl">
+    </p>
+    <input type="submit" class="btn btn-primary" value="Update name/photo" ng-click=" updateProfile(user.name, user.photo)">
+    <br><br>
+
+  </form>
+
+  <p>
+    <button role="button" ng-click="logout()" class="btn btn-danger">Log Out</button>
+  </p>
+</div>
+
+<div>
+<form role="form">
+  <h3>Change Password</h3>
+
+  <p class="form-group">
+    <label>Old Password:</label>
+    <input type="password" ng-keypress="clear()" ng-model="oldpass" class="form-control" />
+  </p>
+
+  <p class="form-group">
+    <label>New Password:</label>
+    <input type="password" ng-keypress="clear()" ng-model="newpass" class="form-control" />
+  </p>
+
+  <p class="form-group">
+    <label>Confirm New Password:</label>
+    <input type="password" ng-keypress="clear()" ng-model="confirm" class="form-control" />
+  </p>
+
+  <button class="btn btn-primary" ng-click="changePassword(oldpass, newpass, confirm)"> Change password</button>
+
+  <p class="error" ng-show="err">{{err}}</p>
+  <p class="good" ng-show="msg">{{msg}}</p>
+</form>
+</div>
+
+<div>
+<form>
+  <h3>Change Email</h3>
+
+  <p class="form-group">
+    <label>New Email:</label>
+    <input type="text" ng-keypress="clear()" ng-model="newEmail" class="form-control" />
+  </p>
+
+  <button class="btn btn-primary" ng-click="changeEmail(newEmail)"> Update email</button>
+</form>
+</div>
+
+</div>
