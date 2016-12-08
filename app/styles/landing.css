@@ -1,0 +1,15 @@
+/* === Navbar === */
+
+.navbar-logo { width: 30px; display: inline !important; }
+.navbar-title { display: inline; }
+
+/* === Header === */
+
+.landing {
+	background-color: red;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+
+}

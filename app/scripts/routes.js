@@ -65,7 +65,7 @@ angular.module('crystalcoachApp')
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'views/landing.html',
         controller: 'MainCtrl',
         resolve: {
           'currentAuth': ['auth', function (auth) {

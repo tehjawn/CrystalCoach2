@@ -17,17 +17,17 @@ module.exports.buildResponse = function(intent, params, callback) {
 
 		// Calculate a food response using User, Food, and Response Callback
 		food.calculate({}, params.food || "banana", function(resp){
-			console.log(resp)
-			callback(resp)
+			console.log(resp);
+			callback(resp);
 		})
 	}
 
 	else if (intent == "Record Activity - General Exercises") {
 		var exercise = require('./exercise')
-		callback(exercise.calculate({}, {
-			exercise: params.exercise || "pushups"
-		}))
+		exercise.calculate({}, params || "pushups", function(resp){
+			callback(resp);
+		})
 	} else {
-		callback("Error - intent not found!")
+		callback("Error - intent not found!");
 	}
 }

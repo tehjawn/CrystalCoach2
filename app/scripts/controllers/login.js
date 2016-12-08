@@ -36,21 +36,6 @@ angular.module('crystalcoachApp')
           })
       };
 
-      // Anonymous login method
-      $scope.anonymousLogin = function () {
-        auth.$signInAnonymously()
-          .then(function (authData) {
-            console.log('logged ', authData.uid);
-          })
-          .catch(function (error) {
-            console.log('login error ', error);
-          })
-      };
-
-    
-
-    
-
       // Autenthication with password and email
       $scope.passwordLogin = function (email, pass) {
 

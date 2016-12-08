@@ -16,14 +16,14 @@ angular.module('crystalcoachApp')
   ) {
 
     var query = rootRef.child('users').child(currentAuth.uid);
-    var user_info = $firebaseArray(query);
+    var userInfo = $firebaseArray(query);
 
     $scope.user = {
       uid: currentAuth.uid,
       name: currentAuth.displayName,
       photo: currentAuth.photoURL,
       email: currentAuth.email,
-      info: user_info
+      info: userInfo
     };
 
 
@@ -51,6 +51,7 @@ angular.module('crystalcoachApp')
       auth.$updateEmail(newEmail)
         .then(function() {
           console.log('email changed successfully');
+          success('Successfully changed email!');
         })
         .catch(function(error) {
           console.log('Error: ', error);
@@ -87,7 +88,7 @@ angular.module('crystalcoachApp')
         })
         .catch(function(error) {
           console.log('error ', error);
-        })
+        });
     };
 
   }]);
