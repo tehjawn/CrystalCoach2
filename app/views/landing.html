@@ -1,28 +1,55 @@
 <div class="landing">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+<!-- Landing Navigation -->
+<nav class="landing--nav">
+  <div class="landing--nav-container">
+    <img class="landing--nav-logo img-responsive" src="./images/logo-tsp-w.png" />
+  </div>
+</nav>
+<!-- Landing Header -->
+<header class="landing--header">
+  <div class="full-overlay landing--header-overlay"></div>
+  <div class="landing--header-content">
+    <h1 class="animated fadeInUp"><span style="font-weight:400">Meet</span> Crystal</h1>
+    <h4 class="animated fadeInUp">Your Personal Fitness Coach</h4>
+    <div class="landing--header-device">
+      <div class="device-mockup mac">
+        <div class="device">
+          <div class="screen">
+            <div class="landing--header--mac-content">
+              <div class="landing--header-crystal">
+                <div class="orb"></div>
+              </div>
+              <span class="landing--header-crystal-speech" ng-init="typeIt(1)">{{crystalSpeechCtn}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-center">
+      <button class="landing--header-btn">Get Started Today</button>
+    </div>
+    <div class="learn-more hide-desktop">
+      Learn More
+      <br>
+      <br>
+      <i class="fa fa-chevron-down animated fadeInDown infinite"></i>
+    </div>
+  </div>
+</header>
+<!-- Landing Information -->
+<section class="landing--section-info">
+  <div class="landing--section-info--underlay-container">
+    <div class="full-overlay landing--section-info-image-underlay"></div>
+    <div class="full-overlay landing--section-info-underlay"></div>
+  </div>
+  <div class="landing--section-info--content">
+    conetnt
+  </div>
+</section>
+<section class="landing--section-about">
 
-<div class="row marketing">
-  <h4>Firebase</h4>
-  <p>
-    Firebase is a powerful API to store and sync data in realtime.
-  </p>
-
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+</section>
+<footer>
+  Created by John Nguyen and Xiao Zheng
+</footer>
 </div>

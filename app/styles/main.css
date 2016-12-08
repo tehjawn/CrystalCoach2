@@ -1,2 +1,10 @@
-@import url('general.css');
-@import url('landing.css');
+/* << main.css >> - Collection of CSS Files for CrystalCoach */
+
+/* --- General Styles --- */
+@import url(general.css);
+
+/* --- Pages --- */
+@import url(pages/landing.css);
+
+/* --- Components --- */
+@import url(components/components.css);
