@@ -8,16 +8,6 @@
   }
 }
 
-@keyframes meander {
-  from {
-    transform:translate(50px, 50px);
-  }
-
-  to {
-    transform:translate(-50px, -50px);
-  }
-}
-
 .orb {
   z-index: 1001;
   display:inline-block;
@@ -30,9 +20,6 @@
   box-shadow:0 0 80px #ebd4ff,0 0 20px #f6ffe1,0 0 10px #f6ffe1;
   border-radius:50%;
   filter:blur(1px);
-  animation-name:meander;
-  animation-iteration-count:infinite;
-  animation-direction: alternate;
   
   &::after,
   &::before {
@@ -55,7 +42,7 @@
   }
   
   &::before {
-    animation-duration:.25s;
+    animation-duration:0.25s;
     width:20rem;
     height:2rem;
     margin-left:-10rem;

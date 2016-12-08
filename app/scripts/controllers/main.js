@@ -8,12 +8,7 @@
  * Controller of the crystalcoachApp
  */
 angular.module('crystalcoachApp')
-  .controller('MainCtrl', ["auth", "$scope", "$timeout", "$location", function(auth, $scope, $timeout, $location) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', ['auth', '$scope', '$timeout', '$location', function(auth, $scope, $timeout, $location) {
 
     $scope.logout = function() {
       auth.$signOut();
@@ -23,19 +18,19 @@ angular.module('crystalcoachApp')
     };
 
     $scope.crystalSpeechCtn = '"Hey Crystal, I did 50 pushups."';
-    $scope.crystalSpeech = "";
+    $scope.crystalSpeech = '';
 
     $scope.typeIt = function(){
 
-    }
+    };
 
     // Orb Logic
     var getV = function() {
-      return 1 * (Math.random() - 0.5);
-    }
-    var getP = function() {
-      return 1 * (Math.random() - 0.5);
-    }
+      return 1 * (Math.random() - 0.5) * (Math.random() < 0.5 ? -1 : 1);
+    };
+    // var getP = function() {
+    //   return 1 * (Math.random() - 0.5);
+    // };
 
     // flake class
     function Flake() {
@@ -53,7 +48,7 @@ angular.module('crystalcoachApp')
         this._render();
       }
 
-    };
+    }
 
     Flake.prototype = {
 
@@ -87,11 +82,11 @@ angular.module('crystalcoachApp')
 
         var transform = 'translate3d(' + this._pos.x + 'px,' + this._pos.y + 'px,0) scale(' + this._scale + ')';
 
-        this._node.style['msTransform'] = transform;
-        this._node.style['webkitTransform'] = transform;
-        this._node.style['MozTransform'] = transform;
-        this._node.style['OTransform'] = transform;
-        this._node.style['transform'] = transform;
+        this._node.style.msTransform = transform;
+        this._node.style.webkitTransform = transform;
+        this._node.style.MozTransform = transform;
+        this._node.style.OTransform = transform;
+        this._node.style.transform = transform;
 
       }
 
@@ -127,12 +122,12 @@ angular.module('crystalcoachApp')
       // next tick
       requestAnimationFrame(function() {
         tick();
-      })
+      });
 
-    }
+    };
 
     // start ticking
     setTimeout(function() {
       tick();
-    }, 100);
+    }, 10);
   }]);
