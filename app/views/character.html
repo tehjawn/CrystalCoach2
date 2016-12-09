@@ -1,11 +1,10 @@
 <div class="character">
-
     <!-- Gender -->
     <div class="gender-row">
-        <label for="gender" class="address">Gender:</label>
+        <h2><label for="gender" class="address">Gender:</label></h2>
         <div class="radio-tile-group">
             <div class="input-container">
-                <input id="male" class="radio-button" type="radio" name="radio" />
+                <input id="male" class="radio-button" type="radio" name="gender" />
                 <div class="radio-tile">
                     <div class="icon male-icon">
                         <i class="fa fa-male fa-3x" aria-hidden="true"></i>
@@ -14,7 +13,7 @@
                 </div>
             </div>
             <div class="input-container">
-                <input id="female" class="radio-button" type="radio" name="radio" />
+                <input id="female" class="radio-button" type="radio" name="gender" />
                 <div class="radio-tile">
                     <div class="icon female-icon">
                         <i class="fa fa-female fa-3x" aria-hidden="true" fa6></i>
@@ -24,34 +23,49 @@
             </div>
         </div>
     </div>
-
+    <!-- Age -->
+    <div class="age-row">
+        &nbsp;
+        <h2><label for="age" class="address">Age:</label></h2>
+    </div>
+    <!-- Height -->
+    <div class="height-row">
+        &nbsp;
+        <h2><label for="height" class="address">Height:</label></h2>
+    </div>
+    <!-- Weight -->
+    <div class="Weight-row">
+        &nbsp;
+        <h2><label for="weight" class="address">Weight:</label></h2>
+    </div>
     <!-- Daily Activities -->
     <div class="activity-row">
-        <label for="gender" class="address">Daily Activities:</label>
+        &nbsp;
+        <h2><label for="activity" class="address">Daily Activities:</label></h2>
         <div class="radio-tile-group">
             <div class="input-container">
-                <input id="sedentary" class="radio-button" type="radio" name="radio" />
+                <input id="sedentary" class="radio-button" type="radio" name="activity" />
                 <div class="radio-tile">
                     <label for="sendentary" class="radio-tile-label">Sedentary</label>
                     <p>On the Butt</p>
                 </div>
             </div>
             <div class="input-container">
-                <input id="light-active" class="radio-button" type="radio" name="radio" />
+                <input id="light-active" class="radio-button" type="radio" name="activity" />
                 <div class="radio-tile">
                     <label for="light-active" class="radio-tile-label">Light</label>
                     <p>On the Feet</p>
                 </div>
             </div>
             <div class="input-container">
-                <input id="active" class="radio-button" type="radio" name="radio" />
+                <input id="active" class="radio-button" type="radio" name="activity" />
                 <div class="radio-tile">
                     <label for="active" class="radio-tile-label">Active</label>
                     <p>Being Physical</p>
                 </div>
             </div>
             <div class="input-container">
-                <input id="super-active" class="radio-button" type="radio" name="radio" />
+                <input id="super-active" class="radio-button" type="radio" name="activity" />
                 <div class="radio-tile">
                     <label for="super-active" class="radio-tile-label">Super Active</label>
                     <p>Workin' Hard</p>
@@ -59,34 +73,39 @@
             </div>
         </div>
     </div>
-
+    <!-- Exercising Days Per Week -->
+    <div class="days-row">
+        &nbsp;
+        <h2><label for="days" class="address">Total Exercise Days Per Week:</label></h2>
+    </div>
     <!-- Intensity -->
     <div class="intensity-row">
-        <label for="gender" class="address">Workout Intensity</label>
+        &nbsp;
+        <h2><label for="intensity" class="address">Workout Intensity</label></h2>
         <div class="radio-tile-group">
             <div class="input-container">
-                <input id="light" class="radio-button" type="radio" name="radio" />
+                <input id="light" class="radio-button" type="radio" name="intensity" />
                 <div class="radio-tile">
                     <label for="light" class="radio-tile-label">Light</label>
                     <p>Not Sweatin'</p>
                 </div>
             </div>
             <div class="input-container">
-                <input id="moderate" class="radio-button" type="radio" name="radio" />
+                <input id="moderate" class="radio-button" type="radio" name="intensity" />
                 <div class="radio-tile">
                     <label for="moderate" class="radio-tile-label">Moderate</label>
                     <p>Challenging Myself</p>
                 </div>
             </div>
             <div class="input-container">
-                <input id="difficult" class="radio-button" type="radio" name="radio" />
+                <input id="difficult" class="radio-button" type="radio" name="intensity" />
                 <div class="radio-tile">
                     <label for="difficult" class="radio-tile-label">Difficult</label>
                     <p>I Need Air</p>
                 </div>
             </div>
             <div class="input-container">
-                <input id="intense" class="radio-button" type="radio" name="radio" />
+                <input id="intense" class="radio-button" type="radio" name="intensity" />
                 <div class="radio-tile">
                     <label for="intense" class="radio-tile-label">Intense</label>
                     <p>I May Or May Not Die</p>
@@ -94,5 +113,57 @@
             </div>
         </div>
     </div>
-    
+    <!-- Goal For Thyself -->
+    <div class="goals-row">
+        &nbsp;
+        <h2><label for="goals" class="address">Today I want to...</label></h2>
+        <div>
+            <div class="header">Weight Loss(Cut)</div>
+            <ul>
+                <li>
+                    <input type="radio" id="a-option" name="selector">
+                    <label for="a-option">-15%</label>
+                    <div class="check"></div>
+                </li>
+                <li>
+                    <input type="radio" id="b-option" name="selector">
+                    <label for="b-option">-20%</label>
+                    <div class="check">
+                        <div class="inside"></div>
+                    </div>
+                </li>
+                <li>
+                    <input type="radio" id="c-option" name="selector">
+                    <label for="c-option">-25%</label>
+                    <div class="check">
+                        <div class="inside"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <div class="header">Weight Gain(Bulk)</div>
+            <ul>
+                <li>
+                    <input type="radio" id="f-option" name="selector">
+                    <label for="f-option">+5%</label>
+                    <div class="check"></div>
+                </li>
+                <li>
+                    <input type="radio" id="s-option" name="selector">
+                    <label for="s-option">+10%</label>
+                    <div class="check">
+                        <div class="inside"></div>
+                    </div>
+                </li>
+                <li>
+                    <input type="radio" id="t-option" name="selector">
+                    <label for="t-option">+15%</label>
+                    <div class="check">
+                        <div class="inside"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
