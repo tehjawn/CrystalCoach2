@@ -75,7 +75,7 @@ module.exports = function (grunt) {
     express: {
       options: {
         script: 'server/app.js',
-          port: 80
+          port: 3000
       },
       defaults: {}
     },
@@ -84,6 +84,14 @@ module.exports = function (grunt) {
         path: 'http://localhost:3000/'
       }
     },
+    
+    prod: {
+      options: {
+        script: 'server/app.js',
+          port: 80
+      },
+      defaults: {}
+    }
     
 
     // Make sure code styles are up to par and there are no obvious mistakes
@@ -379,6 +387,21 @@ module.exports = function (grunt) {
       'autoprefixer:server',
       'express',
       'open',
+      'watch'
+    ]);
+  });
+
+  grunt.registerTask('deploy', 'Compile then start a connect/express web server', function (target) {
+    if (target === 'dist') {
+      return grunt.task.run(['build', 'express:prod']);
+    }
+
+    grunt.task.run([
+      'clean:server',
+      'wiredep',
+      'concurrent:server',
+      'autoprefixer:server',
+      'prod',
       'watch'
     ]);
   });
