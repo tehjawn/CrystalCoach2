@@ -17,11 +17,14 @@
   min-width: 230px;
   max-width: 315px;
   width: 100%;
-  color: #ffffff;
+  color: #333;
   text-align: left;
   line-height: 1.4em;
+  word-wrap: break-word;
   background-color: #141414;
+  box-shadow: 0 3px 15px -3px rgba(0,0,0,.2);
 }
+
 .card * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -36,7 +39,7 @@
 }
 .card figcaption {
   width: 100%;
-  background-color: #141414;
+  background-color: #fafafa;
   padding: 25px;
   position: relative;
 }
@@ -49,7 +52,7 @@
   height: 0;
   border-style: solid;
   border-width: 55px 0 0 400px;
-  border-color: transparent transparent transparent #141414;
+  border-color: transparent transparent transparent #fafafa;
 }
 .card figcaption a {
   padding: 5px;
@@ -94,4 +97,8 @@
   font-size: 0.8em;
   letter-spacing: 1px;
   opacity: 0.8;
+}
+
+.account-about-icon {
+  width: 30px;
 }

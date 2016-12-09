@@ -1,5 +1,45 @@
 .app-nav {
 	width: 100%;
 	background-color: #1C6E88;
-	padding: 10px 0;
+}
+
+.app-nav-ctn {
+	width: 100%;
+}
+
+.app-nav-items {
+	list-style-type: none;
+  margin: 0;
+  padding: 0 40px;
+  overflow: hidden;
+}
+
+.app-nav-items img {
+	max-height: 55px;
+}
+
+.app-nav-items li:first-child {
+	float: left;
+}
+
+.app-nav-items li {
+    float: right;
+}
+
+.app-nav-items li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.active {
+    background-color: rgba(255, 255, 255, .2);
+}
+
+@media screen and (max-width: 768px) {
+
+.app-nav-items { padding: 0 5px; }
+.app-nav-items li a { padding: 20px 15px; }
 }

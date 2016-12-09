@@ -8,14 +8,25 @@
  * Controller of the crystalcoachApp
  */
 angular.module('crystalcoachApp')
-  .controller('HomeCtrl', ['auth', 'currentAuth', '$scope', '$location', function (auth, currentAuth, $scope, $location) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('HomeCtrl', ['$location', '$scope', 'auth', 'currentAuth', '$firebaseArray', function(
+    $location,
+    $scope,
+    auth,
+    currentAuth,
+    $firebaseArray
+  ) {
 
-    $scope.user = currentAuth;
+    $scope.authUser = currentAuth;
+    var query = rootRef.child('users').child(currentAuth.uid);
+    var userInfo = $firebaseArray(query);
+
+    $scope.user = {
+      uid: currentAuth.uid,
+      name: currentAuth.displayName,
+      photo: currentAuth.photoURL,
+      email: currentAuth.email,
+      info: userInfo
+    };
 
     $scope.logout = function () {
       auth.$signOut();

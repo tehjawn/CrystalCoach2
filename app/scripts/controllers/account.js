@@ -16,6 +16,7 @@ angular.module('crystalcoachApp')
     $timeout
   ) {
 
+    $scope.authUser = currentAuth;
     var query = rootRef.child('users').child(currentAuth.uid);
     var userInfo = $firebaseArray(query);
 
