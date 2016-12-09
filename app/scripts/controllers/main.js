@@ -19,4 +19,5 @@ angular.module('crystalcoachApp')
 
     $scope.crystalSpeechCtn = '"Hey Crystal, I did 50 pushups."';
     $scope.crystalSpeech = '';
+    
   }]);

@@ -8,5 +8,6 @@
 
 /* --- Pages --- */
 @import url(pages/landing.css);
+@import url(pages/login.css);
 @import url(pages/account.css);
 @import url(pages/character.css);
