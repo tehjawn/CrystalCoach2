@@ -98,7 +98,7 @@
 }
 
 
-ul li{
+.character-trait-list li{
   color: #AAAAAA;
   display: block;
   position: relative;
@@ -108,12 +108,12 @@ ul li{
     border-bottom: 1px solid #111111;
 }
 
-ul li input[type=radio]{
+.character-trait-list li input[type=radio]{
   position: absolute;
   visibility: hidden;
 }
 
-ul li label{
+.character-trait-list li label{
   display: block;
   position: relative;
   font-weight: 300;
@@ -126,11 +126,11 @@ ul li label{
   -webkit-transition: all 0.25s linear;
 }
 
-ul li:hover label{
+.character-trait-list li:hover label{
     color: #FFFFFF;
 }
 
-ul li .check{
+.character-trait-list li .check{
   display: block;
   position: absolute;
   border: 5px solid #AAAAAA;
@@ -144,11 +144,11 @@ ul li .check{
     -webkit-transition: border .25s linear;
 }
 
-ul li:hover .check {
+.character-trait-list li:hover .check {
   border: 5px solid #FFFFFF;
 }
 
-ul li .check::before {
+.character-trait-list li .check::before {
   display: block;
   position: absolute;
     content: '';
