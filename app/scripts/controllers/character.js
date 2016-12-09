@@ -56,6 +56,10 @@ angular.module('crystalcoachApp')
             var calories;
             calories = ((iifym.calculate(data).protein * 4) + (iifym.calculate(data).carbs * 4) + (iifym.calculate(data).fat * 9))
             console.log("Your Calorie Count: " + calories);
+            $scope.userData = data;
+            $scope.userData.everything = iifym.calculate(data);
+            $scope.userData.calories = calories;
+
         }
 
     }]);
