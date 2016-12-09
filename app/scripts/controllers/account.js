@@ -28,6 +28,11 @@ angular.module('crystalcoachApp')
       info: userInfo
     };
 
+    $scope.editAccountMode = false;
+    $scope.toggleAccountEditMode = function() { 
+      console.log("Toggling Edit Mode")
+      $scope.editAccountMode ? $scope.editAccountMode=false : $scope.editAccountMode=true;
+    }
 
     $scope.authInfo = currentAuth;
 

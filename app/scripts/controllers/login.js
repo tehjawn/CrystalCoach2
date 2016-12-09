@@ -7,7 +7,8 @@
  * Manages authentication to any active providers.
  */
 angular.module('crystalcoachApp')
-  .controller('LoginCtrl', ['$scope', 'auth', '$location', function ($scope, auth, $location) {
+  .controller('LoginCtrl', ['$q', '$firebaseArray', '$timeout', '$scope', 'auth', '$location', 
+    function ($q, $firebaseArray, $timeout, $scope, auth, $location) {
 
     $scope.loginBtn = true;
     $scope.logoutBtn = true;
@@ -20,7 +21,6 @@ angular.module('crystalcoachApp')
         $location.path('/account');
       }
     });
-
     
 
       // SignIn with a Provider
@@ -65,28 +65,34 @@ angular.module('crystalcoachApp')
             })
             .then(function (authData) {
             console.log('Logged user: ', authData.uid);
-              createProfile();
+              createProfile(email, authData);
               redirect();
             })
             .catch(function (error) {
               console.error('Error: ', error);
+              showError(error);
             });
           }
         };
 
         //todo wait till SDK 3.x support comes up to test
-        function createProfile(user) {
-
+        function createProfile(email, user) {
+          console.log("Creating new profile with ID " + user.uid);
           // var query =
           var userObj = rootRef.child('users').child(user.uid);
           var def = $q.defer();
-          ref.set({email: email, name: firstPartOfEmail(email)}, function (err) {
+          userObj.set({
+            email: email, 
+            name: firstPartOfEmail(email),
+            photoURL: 'http://publicdomainvectors.org/photos/abstract-user-flat-4.png'
+          }, 
+            function (err) {
             $timeout(function () {
               if (err) {
                 def.reject(err);
               }
               else {
-                def.resolve(ref);
+                def.resolve(userObj);
               }
             });
           });
@@ -112,6 +118,10 @@ angular.module('crystalcoachApp')
 
     function showError(err) {
       $scope.err = err;
+      $("#errMessage").addClass("animated shake");
+      $timeout(function() {
+        $("#errMessage").removeClass("animated shake")
+      }, 500);
     }
 
 

@@ -24,7 +24,7 @@
         <button class="btn btn-default" ng-cloak ng-show="createMode" ng-click="createMode = false"> Cancel </button>
       </p>
     </form>
-    <!-- <p ng-show="err" class="bg-danger">{{err}}</p> -->
+    <p id="errMessage" ng-show="err" class="bg-danger">{{err.message}}</p>
     <hr>
     <p>
       <button class="login-btn-google" ng-click="oauthLogin('google')"><i class="fa fa-google"></i> Google Sign In</button>
