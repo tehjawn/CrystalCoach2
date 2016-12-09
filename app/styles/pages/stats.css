@@ -1,0 +1,7 @@
+.stats-card {
+	width: 800px;
+	max-width: 97%;
+}
+
+.grid-item { width: 200px; background-color: blue; }
+.grid-item--width2 { width: 400px; background-color: blue; }

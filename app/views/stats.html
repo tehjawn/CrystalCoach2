@@ -14,7 +14,7 @@
     <figure class="card hover"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample74.jpg" />
       <figcaption>
         <img src="{{authUser.photoURL || user.photoURL || 'http://publicdomainvectors.org/photos/abstract-user-flat-4.png'}}" alt="profile-sample2" class="profile" />
-        <h2>{{authUser.displayName || user.displayName}}<span>{{user.occupation}} <button class="account--edit-profile-btn" ng-click="toggleAccountEditMode()"><i class="fa fa-pencil-square-o"></i> Edit Profile</button></span></h2>
+        <h2>{{authUser.displayName || user.displayName}}<span>{{user.occupation}}</h2>
         <a style="color: #1c6e88" class="btn btn-sm" rel="publisher" href="https://www.facebook.com/crystalcoachme/?hc_ref=SEARCH&fref=nf">
           <i class="fa fa-facebook"></i>
         </a>
@@ -28,91 +28,33 @@
         <br>
         <h3>About</h3>
         <br>
-        {{user}}
         <p>
-          <i class="account-about-icon fa fa-globe"></i> 
+          <i class="account-about-icon fa fa-globe"></i>
           <span ng-hide="editAccountMode">{{user.info.ethnicity}}</span>
           <input ng-show="editAccountMode" type="text" ng-model="user.info.ethnicity">
         </p>
-        <p>
-          <i class="account-about-icon fa fa-clock-o"></i>
-          <span ng-hide="editAccountMode">{{user.info.age}}</span>
-          <input ng-show="editAccountMode" type="text" ng-model="user.info.age">
-        </p>
-        <p>
-          <i class="account-about-icon fa fa-user"></i>
-          <span ng-hide="editAccountMode">{{user.info.height}}</span>
-          <input ng-show="editAccountMode" type="text" ng-model="user.info.height">
-        </p>
-        <p>
-          <i class="account-about-icon fa fa-balance-scale"></i>
-          <span ng-hide="editAccountMode">{{user.info.weight}}</span>
-          <input ng-show="editAccountMode" type="text" ng-model="user.info.weight">
-        </p>
-        <p>
-          <i class="account-about-icon fa fa-heart"></i>
-          <span ng-hide="editAccountMode">{{user.info.flavor}}</span>
-          <input ng-show="editAccountMode" type="text" ng-model="user.info.flavor">
-        </p>
-        <div ng-show="editAccountMode">
-          <hr>
-          <p class="form-group">
-            <label>Account ID</label>
-            <br />{{user.uid}}
-          </p>
-          <p class="form-group">
-            <label> Name </label>
-            <input type="text" class="form-control" ng-model="user.name" name="userName">
-          </p>
-          <img ng-src="{{ user.photo }}" width="100" height="100">
-          <p class="form-group">
-            <label> Image profile URL </label>
-            <input type="text" class="form-control" ng-model="user.photo" name="photoUrl">
-          </p>
-          <input type="submit" class="btn btn-primary" value="Update name/photo" ng-click=" updateProfile(user.name, user.photo)">
-          <div>
-            <form role="form">
-              <h3>Change Password</h3>
-              <p class="form-group">
-                <label>Old Password:</label>
-                <input type="password" ng-keypress="clear()" ng-model="oldpass" class="form-control" />
-              </p>
-              <p class="form-group">
-                <label>New Password:</label>
-                <input type="password" ng-keypress="clear()" ng-model="newpass" class="form-control" />
-              </p>
-              <p class="form-group">
-                <label>Confirm New Password:</label>
-                <input type="password" ng-keypress="clear()" ng-model="confirm" class="form-control" />
-              </p>
-              <button class="btn btn-primary" ng-click="changePassword(oldpass, newpass, confirm)"> Change password</button>
-              <p class="error" ng-show="err">{{err}}</p>
-              <p class="good" ng-show="msg">{{msg}}</p>
-            </form>
-          </div>
-          <div>
-            <form>
-              <h3>Change Email</h3>
-              <p class="form-group">
-                <label>New Email:</label>
-                <input type="text" ng-keypress="clear()" ng-model="newEmail" class="form-control" />
-              </p>
-              <button class="btn btn-primary" ng-click="changeEmail(newEmail)"> Update email</button>
-            </form>
-          </div>
-        </div>
-        <!-- <input type="text" ng-model=""/> -->
       </figcaption>
     </figure>
-    <figure class="card hover conversation-card">
+    <figure class="card hover stats-card">
       <figcaption>
-        <h3>Conversation with Crystal</h3>
+        <h3><i class='fa fa-line-chart'></i> My Stats</h3>
         <hr>
-        <p ng-repeat="message in userinfo.messageHistory">
-          <strong>{{message.sender}}</strong>: {{message.content}}
-          <br>
-          <small>test{{message.date}}</small>
-        </p>
+        <div class="stats--graph-ctn">
+          <canvas class="stats--card-chart chart chart-horizontal-bar" chart-data="data" chart-labels="labels" 
+    chart-series="series" chart-click="onClick"></canvas> 
+        </div>
+        <div class="stats--graph-ctn">
+          <canvas class="stats--card-chart chart chart-horizontal-bar" chart-data="data" chart-labels="labels" 
+    chart-series="series" chart-click="onClick"></canvas> 
+        </div>
+        <div class="stats--graph-ctn">
+          <canvas class="stats--card-chart chart chart-horizontal-bar" chart-data="data" chart-labels="labels" 
+    chart-series="series" chart-click="onClick"></canvas> 
+        </div>
+        <div class="stats--graph-ctn">
+          <canvas class="stats--card-chart chart chart-pie" chart-data="data" chart-labels="labels" 
+    chart-series="series" chart-click="onClick"></canvas> 
+        </div>
       </figcaption>
     </figure>
   </div>

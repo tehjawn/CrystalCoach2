@@ -78,6 +78,7 @@ angular.module('crystalcoachApp')
 
     function error(err) {
       console.log('Error: ', err);
+      alert(err, 'err');
     }
 
     function success(msg) {

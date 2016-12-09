@@ -27,7 +27,8 @@
     </figure>
     <figure class="card hover home--news-card">
       <figcaption>
-        <h3>Conversation with Crystal</h3> {{authUser}}
+        <h3>Conversation with Crystal</h3>
+        {{user.info}}
         <hr>
         <p ng-repeat="message in userinfo.messageHistory">
           <strong>{{message.sender}}</strong>: {{message.content}}
