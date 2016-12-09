@@ -1,60 +1,91 @@
 <div class="landing">
-<!-- Landing Navigation -->
-<nav class="landing--nav">
-  <div class="landing--nav-container">
-    <img class="landing--nav-logo img-responsive" src="./images/logo-tsp-w.png" />
-    <a class="landing--nav-login" href="#/login">Login</a>
-  </div>
-</nav>
-<!-- Landing Header -->
-<header class="landing--header">
-
+  <!-- Landing Navigation -->
+  <nav class="landing--nav">
+    <div class="landing--nav-container">
+      <img class="landing--nav-logo img-responsive" src="./images/logo-tsp-w.png" />
+      <a class="landing--nav-login" href="#/login">Login</a>
+    </div>
+  </nav>
+  <!-- Landing Header -->
+  <header class="landing--header">
     <div class="wave-container">
       <div class="wave"></div>
     </div>
-  <div class="full-overlay landing--header-overlay"></div>
-  <div class="landing--header-content">
-    <h1 class="animated fadeInUp"><span style="font-weight:400">Meet</span> Crystal</h1>
-    <h4 class="animated fadeInUp">Your Personal Fitness Coach</h4>
-    <div class="landing--header-device">
-      <div class="device-mockup mac">
-        <div class="device">
-          <div class="screen">
-            <div class="landing--header--mac-content">
-              <div class="landing--header-crystal">
-                <div class="orb"></div>
+    <div class="full-overlay landing--header-overlay"></div>
+    <div class="landing--header-content">
+      <h1 class="animated fadeInUp"><span style="font-weight:400">Meet</span> Crystal</h1>
+      <h4 class="animated fadeInUp">Your Personal Fitness Coach</h4>
+      <div class="landing--header-device">
+        <div class="device-mockup mac">
+          <div class="device">
+            <div class="screen">
+              <div class="landing--header--mac-content">
+                <div class="orb landing--header--orb-container">
+                  <div class="wave-container" style="margin-top: 5%;">
+                    <div class="wave"></div>
+                  </div>
+                </div>
+                <span class="landing--header-crystal-speech" ng-init="typeIt(1)">{{crystalSpeechCtn}}</span>
               </div>
-              <span class="landing--header-crystal-speech" ng-init="typeIt(1)">{{crystalSpeechCtn}}</span>
             </div>
           </div>
         </div>
       </div>
+      <div class="row justify-center">
+        <a href="#/login">
+          <button class="landing--header-btn">Get Started Today</button>
+        </a>
+      </div>
+      <div class="learn-more hide-desktop">
+        Learn More
+        <br>
+        <br>
+        <i class="fa fa-chevron-down animated fadeInDown infinite"></i>
+      </div>
     </div>
-    <div class="row justify-center">
-      <button class="landing--header-btn">Get Started Today</button>
+  </header>
+  <!-- Landing Information -->
+  <section class="landing--section-info">
+    <div class="landing--section-info--content">
+      <div class="row justify-center" style="padding-bottom: 40px;">
+        <img src="./images/logo.png" class="img-responsive landing--section-info-logo" alt="">
+        <h2>CrystalCoach Features</h2>
+      </div>
+      <div class="landing--section-info-card text-center">
+        <div class="landing--section-info-card-ctn">
+        <h1><i class="fa fa-microphone"></i></h1>
+        <br>
+        <h3>Voice Assistant</h3>
+        <br> Record meals and workouts with your voice. Just say "Hey Crystal".
+      </div>
+      </div>
+      <div class="landing--section-info-card text-center">
+        <div class="landing--section-info-card-ctn">
+        <h1><i class="fa fa-book"></i></h1>
+        <br>
+        <h3>Activity Recorder</h3>
+        <br> Keep track of your diet and fitness habits through recording your meals and workouts.
+      </div>
+      </div>
+      <div class="landing--section-info-card text-center">
+        <div class="landing--section-info-card-ctn">
+        <h1><i class="fa fa-line-chart"></i></h1>
+        <br>
+        <h3>Health Recommendations</h3>
+        <br> Gain insights on your daily health with Crystal's recommendations.
+      </div>
+      </div>
     </div>
-    <div class="learn-more hide-desktop">
-      Learn More
+  </section>
+  <footer>
+    <p>
+      <img src="./images/logo-tsp.png" alt="">
       <br>
-      <br>
-      <i class="fa fa-chevron-down animated fadeInDown infinite"></i>
-    </div>
-  </div>
-</header>
-<!-- Landing Information -->
-<section class="landing--section-info">
-  <div class="landing--section-info--underlay-container">
-    <div class="full-overlay landing--section-info-image-underlay"></div>
-    <div class="full-overlay landing--section-info-underlay"></div>
-  </div>
-  <div class="landing--section-info--content">
-    conetnt
-  </div>
-</section>
-<section class="landing--section-about">
-
-</section>
-<footer>
-  Created by John Nguyen and Xiao Zheng
-</footer>
+    Made with <i class="fa fa-heart" style="color: #c23"></i> by John Nguyen and Xiao Zheng
+    </p>
+    <a href="https://github.com/tehjawn/crystalcoach2"><i class="fa fa-github"></i></a>
+    <a href="https://drive.google.com/drive/u/0/folders/0B4L2bHrQgHD4Q1lfQmlqaDJqeTA"><i class="fa fa-google"></i></a>
+    <a href="https://www.facebook.com/crystalcoachme"><i class="fa fa-facebook"></i></a>
+    <a href="https://twitter.com/crystalcoachme"><i class="fa fa-twitter"></i></a>
+  </footer>
 </div>

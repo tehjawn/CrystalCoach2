@@ -12,53 +12,12 @@
   z-index: 1001;
   display:inline-block;
   position:relative;
-  top:50%;
-  transform:translateY(-50%);
-  width:2rem;
-  height:2rem;
-  background:#fff;
+  width:100%;
+  height:100%;
+  transform-origin: center;
+  background:rgba(255, 255, 255, .2);
   box-shadow:0 0 80px #ebd4ff,0 0 20px #f6ffe1,0 0 10px #f6ffe1;
   border-radius:50%;
+  overflow: hidden;
   filter:blur(1px);
-  
-  &::after,
-  &::before {
-    position:absolute;
-    animation-name:glow;
-    animation-iteration-count:infinite;
-    animation-direction: alternate;
-    top:50%;
-    left:50%;
-    content:'';
-    background: radial-gradient(ellipse at center, rgba(240,255,255,.05) 0%,rgba(240,255,255,0) 50%);
-  }
-  
-  &::after {
-    animation-duration:1s;
-    width:40rem;
-    height:.5rem;
-    margin-left:-20rem;
-    margin-top:-.25rem;
-  }
-  
-  &::before {
-    animation-duration:0.25s;
-    width:20rem;
-    height:2rem;
-    margin-left:-10rem;
-    margin-top:-1rem;
-  }
-}
-
-.flake {
-  position:absolute;
-  left:50%;
-  top:50%;
-  background:#fff;
-  width:.25rem;
-  height:.25rem;
-  margin-top:-.125rem;
-  margin-left:-.125rem;
-  border-radius:50%;
-  box-shadow:0 0 20px #f6ffe1,0 0 10px #f6ffe1;
 }
