@@ -13,7 +13,7 @@
   <div class="account-profile-card">
     <figure class="card hover"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample74.jpg" />
       <figcaption>
-        <img src="./images/john.png" alt="profile-sample2" class="profile" />
+        <img src="{{authUser.photoURL || user.photoURL}}" alt="profile-sample2" class="profile" />
         <h2>{{authUser.displayName || user.displayName}}<span>{{user.occupation}}</span></h2>
         <p></p>
         <a style="color: #1c6e88" class="btn btn-sm" rel="publisher" href="https://www.facebook.com/crystalcoachme/?hc_ref=SEARCH&fref=nf">
@@ -58,4 +58,15 @@
       </figcaption>
     </figure>
   </div>
+</div>
+
+<nav id="nav" class="menu">
+    <input type="checkbox" href="#" class="menu-open menu-toggle" name="menu-open" id="menu-open" />
+    <label class="menu-open-button" for="menu-open">
+      <img src="./images/logo.png" style="width:50px" />
+    </label>
+    <a ng-click class="ripple menu-item" title="Add Activity"> <i class="fa fa-plus"></i> </a>
+    <a ng-click="listen()" class="ripple menu-item" title="Talk with Crystal"> <i class="fa fa-microphone"></i> </a>
+  </nav>
+  
 </div>

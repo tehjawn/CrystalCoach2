@@ -2,7 +2,7 @@
   <div class="app-nav-ctn">
     <ul class="app-nav-items">
       <a href="#/home"><img src="./images/logo-tsp-w.png" alt=""></a>
-      <li><a href="#/home" title="Log Off"><i class="fa fa-sign-out"></i></a></li>
+      <li><a ng-click="logout()" title="Log Off"><i class="fa fa-sign-out"></i></a></li>
       <li><a href="#/home" title="My Fitness"><i class="fa fa-area-chart"></i></a></li>
       <li class="active"><a href="#/home" title="My Dashboard"><i class="fa fa-dashboard"></i></a></li>
       <li><a href="#/account" title="My Account"><i class="fa fa-user-circle-o"></i></a></li>
@@ -13,28 +13,38 @@
   <div class="account-profile-card">
     <figure class="card hover"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample74.jpg" />
       <figcaption>
-        <img src="./images/john.png" alt="profile-sample2" class="profile" />
+        <img src="{{authUser.photoURL || user.photoURL}}" alt="profile-sample2" class="profile" />
         <h2>{{authUser.displayName || user.displayName}}<span>{{user.occupation}}</span></h2>
         <hr>
         <br>
-        <h3>About</h3>
+        <h3>Rundown</h3>
         <br>
         <p>
-          <i class="account-about-icon fa fa-balance-scale"></i> 155 lbs.
+          <i class="account-about-icon fa fa-balance-scale" title="Current Weight"></i> 155 lbs.
         </p>
         <!-- <input type="text" ng-model=""/> -->
       </figcaption>
     </figure>
     <figure class="card hover conversation-card">
       <figcaption>
-        <h3>Conversation with Crystal</h3>
-    {{authUser}}
+        <h3>Conversation with Crystal</h3> {{authUser}}
         <hr>
         <p ng-repeat="message in userinfo.messageHistory">
-          <strong>{{message.sender}}</strong>: {{message.content}}<br>
+          <strong>{{message.sender}}</strong>: {{message.content}}
+          <br>
           <small>test{{message.date}}</small>
         </p>
       </figcaption>
     </figure>
   </div>
+</div>
+<nav id="nav" class="menu">
+  <input type="checkbox" href="#" class="menu-open menu-toggle" name="menu-open" id="menu-open" />
+  <label class="menu-open-button" for="menu-open">
+    <img src="./images/logo.png" style="width:50px" />
+  </label>
+  <a href="./stats" class="ripple menu-item"> <i class="fa fa-bar-chart"></i> </a>
+  <a ng-click="listen()" class="ripple menu-item"> <i class="fa fa-microphone"></i> </a>
+</nav>
+
 </div>

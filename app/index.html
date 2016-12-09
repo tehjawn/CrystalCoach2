@@ -28,6 +28,15 @@
 
   <div ng-view=""></div>
   
+<div class="mic-overlay" ng-click="stopListening()" style="z-index: 3">
+  <div class="canvas-underlay" ng-click="stopListening()" style="z-index: 3"></div>
+  <canvas id="canvas" ng-click="stopListening()" style="z-index: 3"></canvas>
+  <img class="mic-loading" src="http://www.techspot.com/images/loading_blue2.gif" />
+</div>
+  <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script>
+  window.jQuery || document.write('<script src="js/vendor/jquery-1.12.4.min.js"><\/script>')
+  </script>
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 <!--   <script>
   ! function(A, n, g, u, l, a, r) {
@@ -79,6 +88,10 @@
   <script src="scripts/controllers/home.js"></script>
   <script src="scripts/controllers/character.js"></script>
   <!-- endbuild -->
+  <script src='http://code.responsivevoice.org/responsivevoice.js'></script>
+
+  <script src="scripts/lib/visualize-voice.js"></script>
+  <script src="scripts/lib/vizRadialArcs.js"></script>
 </body>
 
 </html>
