@@ -13,7 +13,8 @@
     "angular-touch": "^1.3.0",
     "iifym.js": "^1.0.0",
     "animate.css": "^3.5.2",
-    "font-awesome": "fontawesome#^4.7.0"
+    "font-awesome": "fontawesome#^4.7.0",
+    "angular-chart.js": "^1.1.1"
   },
   "devDependencies": {
     "mockfirebase": "0.11.0",

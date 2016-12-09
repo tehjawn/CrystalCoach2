@@ -8,7 +8,8 @@
  * Controller of the crystalcoachApp
  */
 angular.module('crystalcoachApp')
-  .controller('HomeCtrl', ['$location', '$scope', 'auth', 'currentAuth', '$firebaseArray', function(
+  .controller('HomeCtrl', ['$timeout', '$location', '$scope', 'auth', 'currentAuth', '$firebaseArray', function(
+    $timeout,
     $location,
     $scope,
     auth,
@@ -35,9 +36,28 @@ angular.module('crystalcoachApp')
       $scope.authData = null;
     };
 
+// Graph Example
+  $scope.labels = ['Calories', 'Carbs', 'Fat', 'Protein'];
+  $scope.series = ['Today', 'This Week'];
+  $scope.data = [
+    [65, 59, 80, 59],
+    [28, 48, 40, 28]
+  ];
+  $scope.onClick = function (points, evt) {
+    console.log(points, evt);
+  };
+
+  // Simulate async data update
+  $timeout(function () {
+    $scope.data = [
+      [28, 48, 40, 28],
+      [65, 59, 80, 59]
+    ];
+  }, 3000);
+
     // Crystal Functions
     $scope.response = function(input) {
-      console.log("Saying '" + input + "'...")
+      console.log('Saying \'' + input + '\'...')
       $scope.userSaid = input
       responsiveVoice.speak(input)
     }

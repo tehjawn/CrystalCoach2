@@ -34,6 +34,18 @@
     text-decoration: none;
 }
 
+.appnav-propic a {
+  margin: 0;
+  padding: 0;
+}
+
+.appnav-propic-img {
+  width: 35px;
+  position: relative;
+  top: -7px;
+  border-radius: 50%;
+}
+
 .active {
     background-color: rgba(255, 255, 255, .2);
 }

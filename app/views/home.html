@@ -5,7 +5,7 @@
       <li><a ng-click="logout()" title="Log Off"><i class="fa fa-sign-out"></i></a></li>
       <li><a href="#/home" title="My Fitness"><i class="fa fa-area-chart"></i></a></li>
       <li class="active"><a href="#/home" title="My Dashboard"><i class="fa fa-dashboard"></i></a></li>
-      <li><a href="#/account" title="My Account"><i class="fa fa-user-circle-o"></i></a></li>
+      <li class="appnav-propic"><a href="#/account" title="My Account"><i class="fa fa-user-circle-o"></i></a></li>
     </ul>
   </div>
 </nav>
@@ -22,10 +22,12 @@
         <p>
           <i class="account-about-icon fa fa-balance-scale" title="Current Weight"></i> 155 lbs.
         </p>
+        <canvas class="home--card-chart chart chart-radar" chart-data="data" chart-labels="labels" 
+    chart-series="series" chart-click="onClick"></canvas> 
         <!-- <input type="text" ng-model=""/> -->
       </figcaption>
     </figure>
-    <figure class="card hover conversation-card">
+    <figure class="card hover home--news-card">
       <figcaption>
         <h3>Conversation with Crystal</h3> {{authUser}}
         <hr>

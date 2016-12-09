@@ -16,5 +16,18 @@ angular.module('crystalcoachApp', [
     'ngSanitize',
     'ngTouch',
     'firebase',
-    'firebase.Auth'
-  ]);
+    'firebase.Auth',
+    'chart.js'
+  ])
+
+  .config(['ChartJsProvider', function (ChartJsProvider) {
+    // Configure all charts
+    ChartJsProvider.setOptions({
+      chartColors: ['#AADDFF', '#CC2233'],
+      responsive: false
+    });
+    // Configure all line charts
+    ChartJsProvider.setOptions('radar', {
+      showLines: false
+    });
+  }])
