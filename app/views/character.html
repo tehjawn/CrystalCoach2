@@ -4,7 +4,7 @@
         <h2><label for="gender" class="address">Gender:</label></h2>
         <div class="radio-tile-group">
             <div class="input-container">
-                <input id="male" class="radio-button" type="radio" name="gender" />
+                <input id="male" class="radio-button" type="radio" name="gender" ng-model="gender" value="male" />
                 <div class="radio-tile">
                     <div class="icon male-icon">
                         <i class="fa fa-male fa-3x" aria-hidden="true"></i>
@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="input-container">
-                <input id="female" class="radio-button" type="radio" name="gender" />
+                <input id="female" class="radio-button" type="radio" name="gender" ng-model="gender" value="female" />
                 <div class="radio-tile">
                     <div class="icon female-icon">
                         <i class="fa fa-female fa-3x" aria-hidden="true" fa6></i>
@@ -27,16 +27,21 @@
     <div class="age-row">
         &nbsp;
         <h2><label for="age" class="address">Age:</label></h2>
+        <input type="text" name="age" ng-model="age"> years old
     </div>
     <!-- Height -->
     <div class="height-row">
         &nbsp;
-        <h2><label for="height" class="address">Height:</label></h2>
+        <h2><label for="height" class="address">Height:</label></h2> 
+        <input type="text" name="foot" ng-model="foot"> ft
+        <br>
+        <input type="text" name="inch" ng-model="inch"> in
     </div>
     <!-- Weight -->
     <div class="Weight-row">
         &nbsp;
         <h2><label for="weight" class="address">Weight:</label></h2>
+        <input type="text" name="pounds" ng-model="pounds"> lbs
     </div>
     <!-- Daily Activities -->
     <div class="activity-row">
@@ -77,6 +82,7 @@
     <div class="days-row">
         &nbsp;
         <h2><label for="days" class="address">Total Exercise Days Per Week:</label></h2>
+        <input type="text" name="days" ng-model="days">
     </div>
     <!-- Intensity -->
     <div class="intensity-row">
@@ -121,19 +127,19 @@
             <div class="header">Weight Loss(Cut)</div>
             <ul class="character-trait-list">
                 <li>
-                    <input type="radio" id="a-option" name="selector">
+                    <input type="radio" id="a-option" name="selector" ng-model="goal" value="-0.15">
                     <label for="a-option">-15%</label>
                     <div class="check"></div>
                 </li>
                 <li>
-                    <input type="radio" id="b-option" name="selector">
+                    <input type="radio" id="b-option" name="selector" ng-model="goal" value="-0.2">
                     <label for="b-option">-20%</label>
                     <div class="check">
                         <div class="inside"></div>
                     </div>
                 </li>
                 <li>
-                    <input type="radio" id="c-option" name="selector">
+                    <input type="radio" id="c-option" name="selector" ng-model="goal" value="-.25">
                     <label for="c-option">-25%</label>
                     <div class="check">
                         <div class="inside"></div>
@@ -145,19 +151,19 @@
             <div class="header">Weight Gain(Bulk)</div>
             <ul class="character-trait-list">
                 <li>
-                    <input type="radio" id="f-option" name="selector">
+                    <input type="radio" id="f-option" name="selector" ng-model="goal" value="0.05">
                     <label for="f-option">+5%</label>
                     <div class="check"></div>
                 </li>
                 <li>
-                    <input type="radio" id="s-option" name="selector">
+                    <input type="radio" id="s-option" name="selector" ng-model="goal" value="0.1">
                     <label for="s-option">+10%</label>
                     <div class="check">
                         <div class="inside"></div>
                     </div>
                 </li>
                 <li>
-                    <input type="radio" id="t-option" name="selector">
+                    <input type="radio" id="t-option" name="selector" ng-model="goal" value="0.15">
                     <label for="t-option">+15%</label>
                     <div class="check">
                         <div class="inside"></div>
@@ -166,4 +172,5 @@
             </ul>
         </div>
     </div>
+    <button class="account--edit-profile-btn" ng-click="characterStats(gender,age,foot,inch,pounds,days,goal)"><i class="fa fa-pencil-square-o"></i>Calculate</button>
 </div>
