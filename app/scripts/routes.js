@@ -115,6 +115,10 @@ angular.module('crystalcoachApp')
         templateUrl: 'views/character.html',
         controller: 'CharacterCtrl'
       })
+      .when('/stats', {
+        templateUrl: 'views/stats.html',
+        controller: 'StatsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

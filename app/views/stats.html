@@ -3,9 +3,9 @@
     <ul class="app-nav-items">
       <a ng-click="goTo('home')"><img src="./images/logo-tsp-w.png" alt=""></a>
       <li><a ng-click="logout()" title="Log Off"><i class="fa fa-sign-out"></i></a></li>
-      <li><a ng-click="goTo('stats')" title="My Fitness"><i class="fa fa-area-chart"></i></a></li>
+      <li class="active"><a ng-click="goTo('stats')" title="My Fitness"><i class="fa fa-area-chart"></i></a></li>
       <li><a ng-click="goTo('home')" title="My Dashboard"><i class="fa fa-dashboard"></i></a></li>
-      <li class="active appnav-propic"><a ng-click="goTo('account')" title="My Account"><i class="fa fa-user-circle-o"></i></a></li>
+      <li class="appnav-propic"><a ng-click="goTo('account')" title="My Account"><i class="fa fa-user-circle-o"></i></a></li>
     </ul>
   </div>
 </nav>
@@ -28,6 +28,7 @@
         <br>
         <h3>About</h3>
         <br>
+        {{user}}
         <p>
           <i class="account-about-icon fa fa-globe"></i> 
           <span ng-hide="editAccountMode">{{user.info.ethnicity}}</span>

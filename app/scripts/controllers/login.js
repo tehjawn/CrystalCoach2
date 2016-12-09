@@ -22,7 +22,10 @@ angular.module('crystalcoachApp')
       }
     });
     
-
+    $scope.goTo = function(dest) {
+      $location.path('/'+dest);
+    
+    }
       // SignIn with a Provider
       $scope.oauthLogin = function (provider) {
         auth.$signInWithPopup(provider)

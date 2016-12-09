@@ -34,6 +34,10 @@
     text-decoration: none;
 }
 
+.app-nav-items li a:hover {
+  filter: brightness(120%);
+}
+
 .appnav-propic a {
   margin: 0;
   padding: 0;

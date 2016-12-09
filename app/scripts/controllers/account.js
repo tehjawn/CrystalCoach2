@@ -16,6 +16,10 @@ angular.module('crystalcoachApp')
     $timeout
   ) {
 
+    $scope.goTo = function(dest) {
+      $location.path('/'+dest);
+    }
+    
     $scope.authUser = currentAuth;
     var query = rootRef.child('users').child(currentAuth.uid);
     var userInfo = $firebaseArray(query);
@@ -101,7 +105,7 @@ angular.module('crystalcoachApp')
         });
     };
 
-    
+
     // Crystal Functions
     $scope.response = function(input) {
       console.log('Saying \'' + input + '\'...')
