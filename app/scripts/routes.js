@@ -111,6 +111,10 @@ angular.module('crystalcoachApp')
           }]
         }
       })
+      .when('/character', {
+        templateUrl: 'views/character.html',
+        controller: 'CharacterCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
