@@ -14,11 +14,11 @@
     <figure class="card hover"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample74.jpg" />
       <figcaption>
         <img src="{{authUser.photoURL || user.photoURL || 'http://publicdomainvectors.org/photos/abstract-user-flat-4.png'}}" alt="profile-sample2" class="profile" />
-        <h2>{{authUser.displayName || user.displayName}}<span>{{user.occupation}}</span></h2>
+        <h2>{{authUser.displayName || user.displayName}}<span>{{user.occupation}}</span></h2><br>
         <h3><i class="fa fa-dashboard"></i> Dashboard</h3>
         <br>
-        <p>
-          <i class="account-about-icon fa fa-balance-scale" title="Current Weight"></i> 155 lbs.
+        <p ng-show="userInfo.weight">
+          <i class="account-about-icon fa fa-balance-scale" title="Current Weight"></i> {{userInfo.weight}}
         </p>
         <canvas class="home--card-chart chart chart-radar" chart-data="data" chart-labels="labels" 
     chart-series="series" chart-click="onClick"></canvas> 
@@ -27,14 +27,16 @@
     </figure>
     <figure class="card hover home--news-card">
       <figcaption>
-        <h3>Conversation with Crystal</h3>
-        {{user.info}}
+        <h3>Social Feed</h3>
         <hr>
-        <p ng-repeat="message in userinfo.messageHistory">
-          <strong>{{message.sender}}</strong>: {{message.content}}
+        <h5>Create new post</h5>
+        <input type="text" ng-model="newPostMessage"/>
+        <input ng-click="addMessage(newPostMessage); newPostMessage = null" class="account--edit-profile-btn" value="Post a status update!"/>
+        <li class="social-post" ng-repeat="msg in messages">
+          {{ msg.text }}
           <br>
-          <small>test{{message.date}}</small>
-        </p>
+          <small>{{msg.user}}</small>
+        </li>
       </figcaption>
     </figure>
   </div>
@@ -44,7 +46,7 @@
   <label class="menu-open-button" for="menu-open">
     <img src="./images/logo.png" style="width:50px" />
   </label>
-  <a href="./stats" class="ripple menu-item"> <i class="fa fa-bar-chart"></i> </a>
+  <a href="" class="ripple menu-item"> <i class="fa fa-plus"></i> </a>
   <a ng-click="listen()" class="ripple menu-item"> <i class="fa fa-microphone"></i> </a>
 </nav>
 

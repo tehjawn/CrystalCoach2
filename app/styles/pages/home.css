@@ -5,3 +5,16 @@
 .home--card-chart {
 	max-width: 250px;
 }
+
+.social-post {
+	list-style: none;
+	padding: 5px;
+	border-left: 4px solid #1c6e88;
+	margin: 5px 0;
+	background-color: #f5f5f5;
+}
+
+.social-post small {
+	font-size: 8pt;
+	font-weight: 600;
+}

@@ -19,8 +19,10 @@ module.exports = (req, res) => {
 	// After receiving a response from API.AI, build a response and return it to the original caller (the user)
 	request.on('response', function(resp) {
 		crystal.buildResponse(resp.result.metadata.intentName, resp.result.parameters, function(crystal_response){
+			console.log(crystal_response);
 			res.json({
-				message: crystal_response
+				message: crystal_response.message,
+				metrics: crystal_response.metrics
 			})
 		})
 	})

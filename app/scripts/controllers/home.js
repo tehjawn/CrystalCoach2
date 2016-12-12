@@ -8,7 +8,8 @@
  * Controller of the crystalcoachApp
  */
 angular.module('crystalcoachApp')
-  .controller('HomeCtrl', ['$timeout', '$location', '$scope', 'auth', 'currentAuth', '$firebaseArray', function(
+  .controller('HomeCtrl', ['$firebaseObject', '$timeout', '$location', '$scope', 'auth', 'currentAuth', '$firebaseArray', function(
+    $firebaseObject,
     $timeout,
     $location,
     $scope,
@@ -17,13 +18,46 @@ angular.module('crystalcoachApp')
     $firebaseArray
   ) {
 
-    $scope.goTo = function(dest) {
-      $location.path('/'+dest);
+    // Message Posting
+    var query = rootRef.child('messages').limitToLast(10);
+    var messages = $firebaseArray(query);
+    messages.$loaded()
+      .then(function() {
+        $scope.messages = messages;
+      })
+      .catch(alert);
+
+    // provide a method for adding a message
+    $scope.addMessage = function(newMessage) {
+      if (newMessage) {
+        // push messages to the end of the array
+        $scope.messages.$add({
+            text: newMessage,
+            user: currentAuth.displayName,
+            userId: currentAuth.uid
+          })
+          .catch(alert);
+      }
+    };
+
+    function alert(msg) {
+      $scope.err = msg;
+      console.log(msg);
+      $timeout(function() {
+        $scope.err = null;
+      }, 5000);
     }
 
     $scope.authUser = currentAuth;
     var query = rootRef.child('users').child(currentAuth.uid);
-    var userInfo = $firebaseArray(query);
+    var userInfo = $firebaseObject(query);
+    userInfo.$bindTo($scope, 'userInfo');
+
+
+
+    $scope.goTo = function(dest) {
+      $location.path('/' + dest);
+    }
 
     $scope.user = {
       uid: currentAuth.uid,
@@ -40,24 +74,17 @@ angular.module('crystalcoachApp')
       $scope.authData = null;
     };
 
-// Graph Example
-  $scope.labels = ['Calories', 'Carbs', 'Fat', 'Protein'];
-  $scope.series = ['Today', 'This Week'];
-  $scope.data = [
-    [65, 59, 80, 59],
-    [28, 48, 40, 28]
-  ];
-  $scope.onClick = function (points, evt) {
-    console.log(points, evt);
-  };
+    // Graph Example
+    $scope.labels = ['Calories', 'Carbs', 'Fat', 'Protein'];
+    $scope.series = ['Have', 'Need'];
+    $scope.data = [[0,0,0,0],[0,0,0,0]]
+    $timeout(function(){
+      $scope.data = [[1, 2, 3, 4], [5, 6, 7, 8]]
+    }, 2000)
 
-  // Simulate async data update
-  $timeout(function () {
-    $scope.data = [
-      [28, 48, 40, 28],
-      [65, 59, 80, 59]
-    ];
-  }, 3000);
+    $scope.onClick = function(points, evt) {
+      console.log(points, evt);
+    };
 
     // Crystal Functions
     $scope.response = function(input) {
@@ -168,11 +195,33 @@ angular.module('crystalcoachApp')
           "postman-token": "17e7252c-8e8a-2bf7-dd09-40088c042fe5"
         },
         "processData": false,
-        "data": data
+        "data": JSON.stringify(data)
       }
 
       $.ajax(settings).done(function(response) {
+        console.log("Crystal Response: "+ JSON.stringify(response))
         callback(response.message)
+        var query = rootRef.child('users').child(currentAuth.uid).child('messageHistory');
+        var userMessageHistory = $firebaseArray(query);
+        var d = new Date()
+        userMessageHistory.$add({
+          sender: currentAuth.displayName,
+          content: input,
+          date: d.getTime()
+        }).then(function(query) {
+          console.log("Added User Input to Message History")
+        })
+        userMessageHistory.$add({
+          sender: "Crystal",
+          content: response.message,
+          date: d.getTime()
+        }).then(function(query) {
+          console.log("Added Crystal Response to Message History")
+        })
+        userInfo.nutrition.quick[0] += response.metrics[0]
+        userInfo.nutrition.quick[1] += response.metrics[1]
+        userInfo.nutrition.quick[2] += response.metrics[2]
+        userInfo.nutrition.quick[3] += response.metrics[3]
         $("canvas").fadeIn();
         $(".mic-loading").fadeOut();
         $(".mic-overlay").fadeOut();

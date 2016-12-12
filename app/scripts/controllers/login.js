@@ -7,8 +7,8 @@
  * Manages authentication to any active providers.
  */
 angular.module('crystalcoachApp')
-  .controller('LoginCtrl', ['$q', '$firebaseArray', '$timeout', '$scope', 'auth', '$location', 
-    function ($q, $firebaseArray, $timeout, $scope, auth, $location) {
+  .controller('LoginCtrl', ['$q', '$firebaseObject', '$timeout', '$scope', 'auth', '$location', 
+    function ($q, $firebaseObject, $timeout, $scope, auth, $location) {
 
     $scope.loginBtn = true;
     $scope.logoutBtn = true;
@@ -30,7 +30,8 @@ angular.module('crystalcoachApp')
       $scope.oauthLogin = function (provider) {
         auth.$signInWithPopup(provider)
           .then(function (authData) {
-            console.log('logged');
+            console.log('Logged new user with Google OAUTH')
+            $scope.createProfile(authData.providerData[0].email, authData.user)
             redirect();
           })
           .catch(function (error) {
@@ -81,13 +82,17 @@ angular.module('crystalcoachApp')
         //todo wait till SDK 3.x support comes up to test
         function createProfile(email, user) {
           console.log("Creating new profile with ID " + user.uid);
-          // var query =
-          var userObj = rootRef.child('users').child(user.uid);
+          console.log("Email" + email);
+          var userListRef = rootRef.child('users').child(user.uid);
+          var userList = $firebaseObject(userListRef);
           var def = $q.defer();
-          userObj.set({
+          userList.$save({
             email: email, 
             name: firstPartOfEmail(email),
-            photoURL: 'http://publicdomainvectors.org/photos/abstract-user-flat-4.png'
+            photoURL: 'http://publicdomainvectors.org/photos/abstract-user-flat-4.png',
+            nutrition: {
+              quick: [0,0,0,0]
+            }
           }, 
             function (err) {
             $timeout(function () {
@@ -95,7 +100,7 @@ angular.module('crystalcoachApp')
                 def.reject(err);
               }
               else {
-                def.resolve(userObj);
+                def.resolve(userList);
               }
             });
           });

@@ -13,5 +13,9 @@ module.exports.calculate = function(user_info, request_info, callback) {
 }
 
 function formatAnswer(exercise, calories, callback) {
-	callback("Doing the exercise, " + exercise + ", burns approximately " + calories + " calories");
+	callback({
+		message: "Doing the exercise, " + exercise + ", burns approximately " + calories + " calories",
+		metrics: {
+			calories: calories
+		});
 }

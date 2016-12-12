@@ -17,7 +17,8 @@ angular.module('crystalcoachApp', [
     'ngTouch',
     'firebase',
     'firebase.Auth',
-    'chart.js'
+    'chart.js',
+    'ngDialog'
   ])
 
   .config(['ChartJsProvider', function (ChartJsProvider) {

@@ -7,9 +7,10 @@
  * Provides rudimentary account management functions.
  */
 angular.module('crystalcoachApp')
-  .controller('AccountCtrl', ['$location', '$scope', 'auth', 'currentAuth', '$firebaseArray', '$timeout', function(
+  .controller('AccountCtrl', ['$location', '$scope', '$firebaseObject', 'auth', 'currentAuth', '$firebaseArray', '$timeout', function(
     $location,
     $scope,
+    $firebaseObject,
     auth,
     currentAuth,
     $firebaseArray,
@@ -22,14 +23,14 @@ angular.module('crystalcoachApp')
     
     $scope.authUser = currentAuth;
     var query = rootRef.child('users').child(currentAuth.uid);
-    var userInfo = $firebaseArray(query);
+    var userInfo = $firebaseObject(query);
+    userInfo.$bindTo($scope, 'userInfo');
 
     $scope.user = {
       uid: currentAuth.uid,
       name: currentAuth.displayName,
       photo: currentAuth.photoURL,
-      email: currentAuth.email,
-      info: userInfo
+      email: currentAuth.email
     };
 
     $scope.editAccountMode = false;
@@ -37,8 +38,6 @@ angular.module('crystalcoachApp')
       console.log("Toggling Edit Mode")
       $scope.editAccountMode ? $scope.editAccountMode=false : $scope.editAccountMode=true;
     }
-
-    $scope.authInfo = currentAuth;
 
     $scope.changePassword = function(oldPass, newPass, confirm) {
       $scope.err = null;
@@ -201,6 +200,10 @@ angular.module('crystalcoachApp')
     }
     $scope.askCrystal = function(input, callback) {
       console.log("Asking Crystal '" + input + "'...")
+      var data = {
+        userInput : input,
+        userID : currentAuth.uid
+      }
       var settings = {
         "async": true,
         "crossDomain": true,
@@ -212,11 +215,33 @@ angular.module('crystalcoachApp')
           "postman-token": "17e7252c-8e8a-2bf7-dd09-40088c042fe5"
         },
         "processData": false,
-        "data": "{\n    \"userInput\" : \"" + input + "\"\n}"
+        "data": JSON.stringify(data)
       }
 
       $.ajax(settings).done(function(response) {
+        console.log("Crystal Response: "+ JSON.stringify(response))
         callback(response.message)
+        var query = rootRef.child('users').child(currentAuth.uid).child('messageHistory');
+        var userMessageHistory = $firebaseArray(query);
+        var d = new Date()
+        userMessageHistory.$add({
+          sender: currentAuth.displayName,
+          content: input,
+          date: d.getTime()
+        }).then(function(query) {
+          console.log("Added User Input to Message History")
+        })
+        userMessageHistory.$add({
+          sender: "Crystal",
+          content: response.message,
+          date: d.getTime()
+        }).then(function(query) {
+          console.log("Added Crystal Response to Message History")
+        })
+        userInfo.nutrition.quick[0] += response.metrics[0]
+        userInfo.nutrition.quick[1] += response.metrics[1]
+        userInfo.nutrition.quick[2] += response.metrics[2]
+        userInfo.nutrition.quick[3] += response.metrics[3]
         $("canvas").fadeIn();
         $(".mic-loading").fadeOut();
         $(".mic-overlay").fadeOut();

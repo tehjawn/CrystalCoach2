@@ -14,14 +14,14 @@
     <figure class="card hover"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample74.jpg" />
       <figcaption>
         <img src="{{authUser.photoURL || user.photoURL || 'http://publicdomainvectors.org/photos/abstract-user-flat-4.png'}}" alt="profile-sample2" class="profile" />
-        <h2>{{authUser.displayName || user.displayName}}<span>{{user.occupation}} <button class="account--edit-profile-btn" ng-click="toggleAccountEditMode()"><i class="fa fa-pencil-square-o"></i> Edit Profile</button></span></h2>
-        <a style="color: #1c6e88" class="btn btn-sm" rel="publisher" href="https://www.facebook.com/crystalcoachme/?hc_ref=SEARCH&fref=nf">
+        <h2>{{authUser.displayName || user.displayName}}<span>{{user.occupation}} <br><button class="account--edit-profile-btn" ng-click="toggleAccountEditMode()"><i class="fa fa-pencil-square-o"></i> Edit Profile</button> &nbsp; <button class="account--edit-profile-btn" ng-click="goTo('character')" title="Calculate logistics such as BMR and nutritional estimations about yourself!"><i class="fa fa-sliders"></i> CrystalCalculate</button></span></h2>
+        <a ng-show="userInfo.social.facebook" style="color: #1c6e88" class="btn btn-sm" rel="publisher" href="https://www.facebook.com/crystalcoachme/?hc_ref=SEARCH&fref=nf">
           <i class="fa fa-facebook"></i>
         </a>
-        <a style="color: #1c6e88" class="btn btn-sm" rel="publisher" href="https://tree.taiga.io/project/tehjawn-crystalcoach/">
+        <a ng-show="userInfo.social.taiga" style="color: #1c6e88" class="btn btn-sm" rel="publisher" href="https://tree.taiga.io/project/tehjawn-crystalcoach/">
           <i class="fa fa-compass"></i>
         </a>
-        <a style="color: #1c6e88" class="btn btn-sm" rel="publisher" href="https://github.com/tehjawn/CrystalCoach">
+        <a ng-show="userInfo.social.github" style="color: #1c6e88" class="btn btn-sm" rel="publisher" href="https://github.com/tehjawn/CrystalCoach">
           <i class="fa fa-github"></i>
         </a>
         <hr>
@@ -29,29 +29,33 @@
         <h3>About</h3>
         <br>
         <p>
+          <i class="account-about-icon fa fa-star"></i>
+          <span>{{userInfo.bmr || "Calculate your BMR for it to appear here"}}</span>
+        </p>
+        <p>
           <i class="account-about-icon fa fa-globe"></i> 
-          <span ng-hide="editAccountMode">{{userInfo.info.ethnicity}}</span>
-          <input ng-show="editAccountMode" type="text" ng-model="userInfo.info.ethnicity">
+          <span ng-hide="editAccountMode">{{userInfo.ethnicity || "Add your ethnicity"}}</span>
+          <input ng-show="editAccountMode" type="text" ng-model="userInfo.ethnicity">
         </p>
         <p>
           <i class="account-about-icon fa fa-clock-o"></i>
-          <span ng-hide="editAccountMode">{{userInfo.info.age}}</span>
-          <input ng-show="editAccountMode" type="text" ng-model="userInfo.info.age">
+          <span ng-hide="editAccountMode">{{userInfo.age || "Add your Age"}}</span>
+          <input ng-show="editAccountMode" type="text" ng-model="userInfo.age">
         </p>
         <p>
           <i class="account-about-icon fa fa-user"></i>
-          <span ng-hide="editAccountMode">{{userInfo.info.height}}</span>
-          <input ng-show="editAccountMode" type="text" ng-model="userInfo.info.height">
+          <span ng-hide="editAccountMode">{{userInfo.height || "Add your Height"}}</span>
+          <input ng-show="editAccountMode" type="text" ng-model="userInfo.height">
         </p>
         <p>
           <i class="account-about-icon fa fa-balance-scale"></i>
-          <span ng-hide="editAccountMode">{{userInfo.info.weight}}</span>
-          <input ng-show="editAccountMode" type="text" ng-model="userInfo.info.weight">
+          <span ng-hide="editAccountMode">{{userInfo.weight || "Add your Weight"}}</span>
+          <input ng-show="editAccountMode" type="text" ng-model="userInfo.weight">
         </p>
         <p>
           <i class="account-about-icon fa fa-heart"></i>
-          <span ng-hide="editAccountMode">{{userInfo.info.flavor}}</span>
-          <input ng-show="editAccountMode" type="text" ng-model="userInfo.info.flavor">
+          <span ng-hide="editAccountMode">{{userInfo.flavor || "Add a fun thing about yourself"}}</span>
+          <input ng-show="editAccountMode" type="text" ng-model="userInfo.flavor">
         </p>
         <div ng-show="editAccountMode">
           <hr>
@@ -107,10 +111,10 @@
       <figcaption>
         <h3>Conversation with Crystal</h3>
         <hr>
-        <p ng-repeat="message in userinfo.messageHistory">
+        <p ng-repeat="message in userInfo.messageHistory">
           <strong>{{message.sender}}</strong>: {{message.content}}
           <br>
-          <small>test{{message.date}}</small>
+          <small>{{message.date | date : short}}</small>
         </p>
       </figcaption>
     </figure>
@@ -121,7 +125,7 @@
   <label class="menu-open-button" for="menu-open">
     <img src="./images/logo.png" style="width:50px" />
   </label>
-  <a ng-click class="ripple menu-item" title="Add Activity"> <i class="fa fa-plus"></i> </a>
+  <a onclick="alert('Text feature coming soon!')" class="ripple menu-item" title="Add Activity"> <i class="fa fa-plus"></i> </a>
   <a ng-click="listen()" class="ripple menu-item" title="Talk with Crystal"> <i class="fa fa-microphone"></i> </a>
 </nav>
 </div>
