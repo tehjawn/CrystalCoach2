@@ -30,8 +30,9 @@
         <h3>Social Feed</h3>
         <hr>
         <h5>Create new post</h5>
-        <input type="text" ng-model="newPostMessage"/>
+        <input type="text" ng-model="newPostMessage" placeholder="Enter a new status here..." />
         <input ng-click="addMessage(newPostMessage); newPostMessage = null" class="account--edit-profile-btn" value="Post a status update!"/>
+        <hr>
         <li class="social-post" ng-repeat="msg in messages">
           {{ msg.text }}
           <br>
@@ -41,13 +42,16 @@
     </figure>
   </div>
 </div>
+
 <nav id="nav" class="menu">
   <input type="checkbox" href="#" class="menu-open menu-toggle" name="menu-open" id="menu-open" />
   <label class="menu-open-button" for="menu-open">
     <img src="./images/logo.png" style="width:50px" />
   </label>
-  <a href="" class="ripple menu-item"> <i class="fa fa-plus"></i> </a>
-  <a ng-click="listen()" class="ripple menu-item"> <i class="fa fa-microphone"></i> </a>
+  <a onclick="alert('Text feature coming soon!')" class="ripple menu-item" title="Add Activity"> <i class="fa fa-plus"></i> </a>
+  <a ng-click="listen()" class="ripple menu-item" title="Talk with Crystal"> <i class="fa fa-microphone"></i> </a>
 </nav>
+</div>
+
 
 </div>

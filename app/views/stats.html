@@ -15,38 +15,20 @@
       <figcaption>
         <img src="{{authUser.photoURL || user.photoURL || 'http://publicdomainvectors.org/photos/abstract-user-flat-4.png'}}" alt="profile-sample2" class="profile" />
         <h2>{{authUser.displayName || user.displayName}}<span>{{user.occupation}}</h2>
-        <a style="color: #1c6e88" class="btn btn-sm" rel="publisher" href="https://www.facebook.com/crystalcoachme/?hc_ref=SEARCH&fref=nf">
-          <i class="fa fa-facebook"></i>
-        </a>
-        <a style="color: #1c6e88" class="btn btn-sm" rel="publisher" href="https://tree.taiga.io/project/tehjawn-crystalcoach/">
-          <i class="fa fa-compass"></i>
-        </a>
-        <a style="color: #1c6e88" class="btn btn-sm" rel="publisher" href="https://github.com/tehjawn/CrystalCoach">
-          <i class="fa fa-github"></i>
-        </a>
         <hr>
         <br>
-        <h3>About</h3>
-        <br>
+        <h3>Stats</h3>
+        <br><!-- 
         <p>
           <i class="account-about-icon fa fa-globe"></i>
-          <span ng-hide="editAccountMode">{{user.info.ethnicity}}</span>
-          <input ng-show="editAccountMode" type="text" ng-model="user.info.ethnicity">
-        </p>
+          <span ng-hide="editAccountMode">{{userInfo.weight}}</span>
+        </p> -->
       </figcaption>
     </figure>
     <figure class="card hover stats-card">
       <figcaption>
         <h3><i class='fa fa-line-chart'></i> My Stats</h3>
         <hr>
-        <div class="stats--graph-ctn">
-          <canvas class="stats--card-chart chart chart-horizontal-bar" chart-data="data" chart-labels="labels" 
-    chart-series="series" chart-click="onClick"></canvas> 
-        </div>
-        <div class="stats--graph-ctn">
-          <canvas class="stats--card-chart chart chart-horizontal-bar" chart-data="data" chart-labels="labels" 
-    chart-series="series" chart-click="onClick"></canvas> 
-        </div>
         <div class="stats--graph-ctn">
           <canvas class="stats--card-chart chart chart-horizontal-bar" chart-data="data" chart-labels="labels" 
     chart-series="series" chart-click="onClick"></canvas> 
