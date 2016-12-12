@@ -153,6 +153,10 @@ angular.module('crystalcoachApp')
     }
     $scope.askCrystal = function(input, callback) {
       console.log("Asking Crystal '" + input + "'...")
+      var data = {
+        userInput: input,
+        userId: currentAuth.uid
+      }
       var settings = {
         "async": true,
         "crossDomain": true,
@@ -164,7 +168,7 @@ angular.module('crystalcoachApp')
           "postman-token": "17e7252c-8e8a-2bf7-dd09-40088c042fe5"
         },
         "processData": false,
-        "data": "{\n    \"userInput\" : \"" + input + "\"\n}"
+        "data": data
       }
 
       $.ajax(settings).done(function(response) {
