@@ -23,5 +23,8 @@
   },
   "appPath": "app",
   "moduleName": "crystalcoachApp",
-  "overrides": {}
+  "overrides": {},
+  "resolutions": {
+    "angular": "1.6.0"
+  }
 }
