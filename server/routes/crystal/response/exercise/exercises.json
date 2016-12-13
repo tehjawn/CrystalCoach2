@@ -1,0 +1,16 @@
+{
+	"pushups" : 0.26 ,
+	"situps" : 0.26 ,
+	"walking" : 0.26 ,
+	"golf" : 0.26 ,
+	"music" : 0.27 ,
+	"cycling" : 0.28 ,
+	"swimming" : 0.29 ,
+
+	"running" : 0.34,
+	"ran" : 0.38,
+	"skating" : 0.41,
+	"hunting" : 0.41,
+	"basketball" : 0.42,
+	"wrestling" : 0.48
+}

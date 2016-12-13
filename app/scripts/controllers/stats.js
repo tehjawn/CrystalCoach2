@@ -29,17 +29,24 @@ angular.module('crystalcoachApp')
     userInfo.$bindTo($scope, 'userInfo')
 
     $scope.labels = ["Calories", "Carbohydrates", "Fat", "Protein"]
+    $scope.series = ["Current", "Goal"]
     $scope.data = [
+      [0, 0, 0, 0],
       [0, 0, 0, 0]
     ]
     $timeout(function() {
       $scope.data = [
-        [1, 2, 3, 4]
+        [1, 2, 3, 4],
+        [5, 6, 7, 8]
       ]
-      $scope.data[0] = $scope.userInfo.nutrition.calories
-      $scope.data[1] = $scope.userInfo.nutrition.carbs
-      $scope.data[2] = $scope.userInfo.nutrition.fat
-      $scope.data[3] = $scope.userInfo.nutrition.protein
+      $scope.data[0][0] = $scope.userInfo.nutrition.calories
+      $scope.data[0][1] = $scope.userInfo.nutrition.carbs
+      $scope.data[0][2] = $scope.userInfo.nutrition.fat
+      $scope.data[0][3] = $scope.userInfo.nutrition.protein
+      $scope.data[1][0] = $scope.userInfo.metrics.calories
+      $scope.data[1][1] = $scope.userInfo.metrics.everything.carbs
+      $scope.data[1][2] = $scope.userInfo.metrics.everything.fat
+      $scope.data[1][3] = $scope.userInfo.metrics.everything.protein
     }, 2000)
 
     $scope.onClick = function(points, evt) {
