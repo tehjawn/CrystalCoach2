@@ -30,9 +30,22 @@ angular.module('crystalcoachApp')
       $scope.oauthLogin = function(provider) {
         auth.$signInWithPopup(provider)
           .then(function(authData) {
+            var usersRef = rootRef.child('users');
+            var users = $firebaseObject(usersRef);
             console.log('Logged new user with Google OAUTH')
             console.log(authData)
-            createProfile(authData.user.email, authData.user)
+            console.log(users)
+            for(user in users) {
+              console.log(user)
+              if(authData.user.uid == user){
+                console.log("User found, now logging in")
+              }
+              else{
+                console.log("User not found, creating new profile")
+                createProfile(authData.user.email, authData.user)
+              }              
+            }
+
             redirect();
           })
           .catch(function(error) {
@@ -92,11 +105,8 @@ angular.module('crystalcoachApp')
         newUser.nutrition = {
           quick: [0, 0, 0, 0]
         }
-        newUser.$save().then(function(ref){
-          ref.$key() === obj.$id;
-        }, function(err) {
-          console.log(err)
-        });
+        newUser.exists = true
+        newUser.$save()
       }
 
       function firstPartOfEmail(email) {
