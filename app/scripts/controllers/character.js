@@ -18,6 +18,10 @@ angular.module('crystalcoachApp')
         $firebaseArray
     ) {
 
+        $scope.goTo = function(dest) {
+            $location.path('/' + dest);
+        }
+
         var query = rootRef.child('users').child(currentAuth.uid).child('metrics');
         var userInfo = $firebaseObject(query);
         userInfo.$bindTo($scope, 'userInfoMetrics');

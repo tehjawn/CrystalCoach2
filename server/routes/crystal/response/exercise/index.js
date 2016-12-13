@@ -7,7 +7,7 @@ module.exports.calculate = function(user_info, request_info, callback) {
 	for (key in exerciseList) {
 		if (request_info.exercise == key) {
 			console.log("Exercise detected: "+key)
-			var caloriesBurned = user_info.weight * exerciseList[key] * 5
+			var caloriesBurned = 170 * exerciseList[key] * Math.round(Math.random()*30)
 		}
 	}
 	if (caloriesBurned > 0) {

@@ -1,16 +1,17 @@
 {
-	"pushups" : 0.26 ,
-	"situps" : 0.26 ,
-	"walking" : 0.26 ,
-	"golf" : 0.26 ,
-	"music" : 0.27 ,
-	"cycling" : 0.28 ,
-	"swimming" : 0.29 ,
+	"pushups" : 0.026538 ,
+	"sit-ups" : 0.026538 ,
+	"walking" : 0.030256 ,
+	"golf" : 0.034103 ,
+	"music" : 0.20 ,
+	"cycling" : 0.030256 ,
+	"swimming" : 0.70 ,
+	"swam" : 0.70 ,
 
-	"running" : 0.34,
-	"ran" : 0.38,
-	"skating" : 0.41,
-	"hunting" : 0.41,
-	"basketball" : 0.42,
-	"wrestling" : 0.48
+	"running" : 0.068077,
+	"ran" : 0.068077,
+	"skating" : 0.037821,
+	"hunting" : 0.037821,
+	"basketball" : 0.056,
+	"wrestling" : 0.045385
 }

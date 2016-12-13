@@ -1,3 +1,14 @@
+<nav class="app-nav">
+    <div class="app-nav-ctn">
+        <ul class="app-nav-items">
+            <a ng-click="goTo('home')"><img src="./images/logo-tsp-w.png" alt=""></a>
+            <li><a ng-click="logout()" title="Log Off"><i class="fa fa-sign-out"></i></a></li>
+            <li><a ng-click="goTo('stats')" title="My Fitness"><i class="fa fa-area-chart"></i></a></li>
+            <li><a ng-click="goTo('home')" title="My Dashboard"><i class="fa fa-dashboard"></i></a></li>
+            <li><a ng-click="goTo('account')" title="My Account"><i class="fa fa-user-circle-o"></i></a></li>
+        </ul>
+    </div>
+</nav>
 <div class="character">
     <!-- Gender -->
     <div class="gender-row">
@@ -24,24 +35,23 @@
         </div>
     </div>
     <!-- Age -->
-    <div class="age-row">
+    <div class="row">
         &nbsp;
-        <h2><label for="age" class="address">Age:</label></h2>
-        <input type="text" name="age" ng-model="age"> years old
+        <input type="text" id="age" placeholder="is just a number" name="age" ng-model="age"> years old
+        <label for="age" class="address">Age</label>
     </div>
     <!-- Height -->
-    <div class="height-row">
+    <div class="row">
         &nbsp;
-        <h2><label for="height" class="address">Height:</label></h2>
-        <input type="text" name="foot" ng-model="foot"> ft
-        <br>
-        <input type="text" name="inch" ng-model="inch"> in
+        <input type="text" id="height" placeholder="heels count" name="foot" ng-model="foot"> ft
+        <label for="height" class="address">Height</label>
+        <input type="text" id="height" placeholder="heels count" name="inch" ng-model="inch"> in
     </div>
     <!-- Weight -->
-    <div class="Weight-row">
+    <div class="row">
         &nbsp;
-        <h2><label for="weight" class="address">Weight:</label></h2>
-        <input type="text" name="pounds" ng-model="pounds"> lbs
+        <input type="text" id="weight" placeholder="don't you lie now" name="pounds" ng-model="pounds"> lbs
+        <label for="weight" class="address">Weight</label>
     </div>
     <!-- Daily Activities -->
     <div class="activity-row">
@@ -79,10 +89,10 @@
         </div>
     </div>
     <!-- Exercising Days Per Week -->
-    <div class="days-row">
+    <div class="row">
         &nbsp;
-        <h2><label for="days" class="address">Total Exercise Days Per Week:</label></h2>
-        <input type="text" name="days" ng-model="days">
+        <input type="text" id="height" placeholder="let's be real" name="days" ng-model="days">
+        <label for="days" class="address">Exercise Days Per Week</label>
     </div>
     <!-- Intensity -->
     <div class="intensity-row">
@@ -123,8 +133,9 @@
     <div class="goals-row">
         &nbsp;
         <h2><label for="goals" class="address">Today I want to...</label></h2>
+        <br>
         <div>
-            <div class="header">Weight Loss(Cut)</div>
+            <div class="header">Lose Weight(Cut)</div>
             <ul class="character-trait-list">
                 <li>
                     <input type="radio" id="a-option" name="selector" ng-model="goal" value="-0.15">
@@ -148,7 +159,7 @@
             </ul>
         </div>
         <div>
-            <div class="header">Weight Gain(Bulk)</div>
+            <div class="header">Gain Weight(Bulk)</div>
             <ul class="character-trait-list">
                 <li>
                     <input type="radio" id="f-option" name="selector" ng-model="goal" value="0.05">
@@ -173,5 +184,6 @@
         </div>
     </div>
     <button class="account--edit-profile-btn" ng-click="characterStats(gender,age,foot,inch,pounds,days,goal,activity,intensity)"><i class="fa fa-pencil-square-o"></i>Calculate</button>
-    <p>{{userData}}</p>
+    <button class="account--edit-profile-btn" ng-click="goTo('account')">Back To Account</button>
+    <!-- <p>{{userData}}</p> -->
 </div>

@@ -1,6 +1,13 @@
 .character {
   margin: 4rem;
 }
+
+.character h2 {
+  color: #079ad9;
+}
+.character p {
+  color: grey;
+}
 .character-container {
     display: -webkit-box;
     display: -webkit-flex;
@@ -174,4 +181,53 @@ input[type=radio]:checked ~ .check::before{
 
 input[type=radio]:checked ~ label{
   color: #079ad9;
+}
+
+.row {
+  position: relative;
+  margin-top: 50px;
+}
+.row input[type="text"] {
+  display: inline-block;
+  width: 500px;
+  height: 40px;
+  box-sizing: border-box;
+  outline: none;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  padding: 10px 10px 10px 220px;
+  -webkit-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+}
+.row input[type="text"] + label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 40px;
+  line-height: 40px;
+  color: white;
+  border-radius: 3px 0 0 3px;
+  padding: 0 20px;
+  background: #079ad9;
+  -webkit-transform: translateZ(0) translateX(0);
+          transform: translateZ(0) translateX(0);
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+.row input[type="text"]:focus + label {
+  -webkit-transform: translateY(-120%) translateX(0%);
+          transform: translateY(-120%) translateX(0%);
+  border-radius: 3px;
+  -webkit-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+}
+.row input[type="text"]:focus {
+  padding: 10px;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
 }
