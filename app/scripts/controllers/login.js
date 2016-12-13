@@ -23,29 +23,32 @@ angular.module('crystalcoachApp')
       });
 
       $scope.goTo = function(dest) {
-          $location.path('/' + dest);
+        $location.path('/' + dest);
 
+      }
+
+      function checkIfUserExists(authData) {
+        var usersRef = rootRef.child('users');
+        var users = $firebaseObject(usersRef);
+        usersRef.child(authData.user.uid).once('value', function(snapshot) {
+          var exists = (snapshot.val() !== null);
+          userExistsCallback(authData, exists);
+        });
+      }
+
+      function userExistsCallback(authData, exists) {
+        if (exists) {
+          console.log("User exists, signing user on")
+        } else {
+          createProfile(authData.user.email, authData.user)
         }
-        // SignIn with a Provider
+      }
+
+      // SignIn with a Provider
       $scope.oauthLogin = function(provider) {
         auth.$signInWithPopup(provider)
           .then(function(authData) {
-            var usersRef = rootRef.child('users');
-            var users = $firebaseObject(usersRef);
-            console.log('Logged new user with Google OAUTH')
-            console.log(authData)
-            console.log(users)
-            for(user in users) {
-              console.log(user)
-              if(authData.user.uid == user){
-                console.log("User found, now logging in")
-              }
-              else{
-                console.log("User not found, creating new profile")
-                createProfile(authData.user.email, authData.user)
-              }              
-            }
-
+            checkIfUserExists(authData)
             redirect();
           })
           .catch(function(error) {
@@ -102,9 +105,9 @@ angular.module('crystalcoachApp')
         newUser.email = email;
         newUser.name = firstPartOfEmail(email);
         newUser.photoURL = 'http://publicdomainvectors.org/photos/abstract-user-flat-4.png',
-        newUser.nutrition = {
-          quick: [0, 0, 0, 0]
-        }
+          newUser.nutrition = {
+            quick: [0, 0, 0, 0]
+          }
         newUser.exists = true
         newUser.$save()
       }

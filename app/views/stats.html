@@ -18,11 +18,12 @@
         <hr>
         <br>
         <h3>Stats</h3>
-        <br><!-- 
-        <p>
-          <i class="account-about-icon fa fa-globe"></i>
-          <span ng-hide="editAccountMode">{{userInfo.weight}}</span>
-        </p> -->
+        <br>
+        <p ng-hide="userInfo.metrics.calories">
+          It seems as though you have not calculated your BMR yet. Click on the button below to calculate it now!
+          <br>
+          <button class="account--edit-profile-btn" ng-click="goTo('character')" title="Calculate logistics such as BMR and nutritional estimations about yourself!"><i class="fa fa-sliders"></i> CrystalCalculate</button>
+        </p>
       </figcaption>
     </figure>
     <figure class="card hover stats-card">
