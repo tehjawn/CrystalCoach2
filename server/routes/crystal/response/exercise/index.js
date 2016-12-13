@@ -1,4 +1,4 @@
-var exerciseList = require('')
+var exerciseList = require('./exercises.json')
 
 // Exercise calculator
 module.exports.calculate = function(user_info, request_info, callback) {
@@ -27,5 +27,6 @@ function formatAnswer(exercise, calories, callback) {
 		message: "Doing the exercise, " + exercise + ", burns approximately " + calories + " calories",
 		metrics: {
 			calories: calories
-		});
+		}
+	});
 }
