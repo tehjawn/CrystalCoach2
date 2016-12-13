@@ -74,13 +74,31 @@ angular.module('crystalcoachApp')
       $scope.authData = null;
     };
 
-    // Graph Example
-    $scope.labels = ['Calories', 'Carbs', 'Fat', 'Protein'];
-    $scope.series = ['Have', 'Need'];
-    $scope.data = [[0,0,0,0],[0,0,0,0]]
-    $timeout(function(){
-      $scope.data = [[1, 2, 3, 4], [5, 6, 7, 8]]
+    $scope.labels = ["Calories", "Carbohydrates", "Fat", "Protein"]
+    $scope.series = ["Current", "Goal"]
+    $scope.data = [
+      [0, 0, 0, 0],
+      [0, 0, 0, 0]
+    ]
+    $timeout(function() {
+      $scope.data = [
+        [1, 2, 3, 4],
+        [5, 6, 7, 8]
+      ]
+
+      $scope.updateData();
     }, 2000)
+
+    $scope.updateData = function(){
+      $scope.data[0][0] = $scope.userInfo.nutrition.quick[0]
+      $scope.data[0][1] = $scope.userInfo.nutrition.quick[1]
+      $scope.data[0][2] = $scope.userInfo.nutrition.quick[2]
+      $scope.data[0][3] = $scope.userInfo.nutrition.quick[3]
+      $scope.data[1][0] = $scope.userInfo.metrics.calories
+      $scope.data[1][1] = $scope.userInfo.metrics.everything.carbs
+      $scope.data[1][2] = $scope.userInfo.metrics.everything.fat
+      $scope.data[1][3] = $scope.userInfo.metrics.everything.protein
+    }
 
     $scope.onClick = function(points, evt) {
       console.log(points, evt);
@@ -218,10 +236,12 @@ angular.module('crystalcoachApp')
         }).then(function(query) {
           console.log("Added Crystal Response to Message History")
         })
-        userInfo.nutrition.quick[0] += response.metrics[0]
-        userInfo.nutrition.quick[1] += response.metrics[1]
-        userInfo.nutrition.quick[2] += response.metrics[2]
-        userInfo.nutrition.quick[3] += response.metrics[3]
+        $scope.userInfo.nutrition.quick[0] += response.metrics[0]
+        $scope.userInfo.nutrition.quick[1] += response.metrics[1]
+        $scope.userInfo.nutrition.quick[2] += response.metrics[2]
+        $scope.userInfo.nutrition.quick[3] += response.metrics[3]
+        console.log($scope.userInfo.nutrition.quick)
+        console.log(response.metrics)
         $("canvas").fadeIn();
         $(".mic-loading").fadeOut();
         $(".mic-overlay").fadeOut();

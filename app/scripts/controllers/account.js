@@ -201,8 +201,8 @@ angular.module('crystalcoachApp')
     $scope.askCrystal = function(input, callback) {
       console.log("Asking Crystal '" + input + "'...")
       var data = {
-        userInput : input,
-        userID : currentAuth.uid
+        userInput: input,
+        userId: currentAuth.uid
       }
       var settings = {
         "async": true,
@@ -238,10 +238,12 @@ angular.module('crystalcoachApp')
         }).then(function(query) {
           console.log("Added Crystal Response to Message History")
         })
-        userInfo.nutrition.quick[0] += response.metrics[0]
-        userInfo.nutrition.quick[1] += response.metrics[1]
-        userInfo.nutrition.quick[2] += response.metrics[2]
-        userInfo.nutrition.quick[3] += response.metrics[3]
+        $scope.userInfo.nutrition.quick[0] += response.metrics[0]
+        $scope.userInfo.nutrition.quick[1] += response.metrics[1]
+        $scope.userInfo.nutrition.quick[2] += response.metrics[2]
+        $scope.userInfo.nutrition.quick[3] += response.metrics[3]
+        console.log($scope.userInfo.nutrition.quick)
+        console.log(response.metrics)
         $("canvas").fadeIn();
         $(".mic-loading").fadeOut();
         $(".mic-overlay").fadeOut();

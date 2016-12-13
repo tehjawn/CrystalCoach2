@@ -20,6 +20,8 @@
         <p ng-show="userInfo.weight">
           <i class="account-about-icon fa fa-balance-scale" title="Current Weight"></i> {{userInfo.weight}}
         </p>
+        <canvas class="home--card-chart chart chart-horizontal-bar" chart-data="data" chart-labels="labels" 
+    chart-series="series" chart-click="onClick"></canvas> 
         <canvas class="home--card-chart chart chart-radar" chart-data="data" chart-labels="labels" 
     chart-series="series" chart-click="onClick"></canvas> 
         <!-- <input type="text" ng-model=""/> -->

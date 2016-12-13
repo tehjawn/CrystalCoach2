@@ -39,15 +39,20 @@ angular.module('crystalcoachApp')
         [1, 2, 3, 4],
         [5, 6, 7, 8]
       ]
-      $scope.data[0][0] = $scope.userInfo.nutrition.calories
-      $scope.data[0][1] = $scope.userInfo.nutrition.carbs
-      $scope.data[0][2] = $scope.userInfo.nutrition.fat
-      $scope.data[0][3] = $scope.userInfo.nutrition.protein
+
+      $scope.updateData();
+    }, 2000)
+
+    $scope.updateData = function(){
+      $scope.data[0][0] = $scope.userInfo.nutrition.quick[0]
+      $scope.data[0][1] = $scope.userInfo.nutrition.quick[1]
+      $scope.data[0][2] = $scope.userInfo.nutrition.quick[2]
+      $scope.data[0][3] = $scope.userInfo.nutrition.quick[3]
       $scope.data[1][0] = $scope.userInfo.metrics.calories
       $scope.data[1][1] = $scope.userInfo.metrics.everything.carbs
       $scope.data[1][2] = $scope.userInfo.metrics.everything.fat
       $scope.data[1][3] = $scope.userInfo.metrics.everything.protein
-    }, 2000)
+    }
 
     $scope.onClick = function(points, evt) {
       console.log(points, evt);
@@ -59,10 +64,6 @@ angular.module('crystalcoachApp')
       $location.path('/login');
       $scope.authData = null;
     };
-
-    $scope.authUser = currentAuth;
-    var query = rootRef.child('users').child(currentAuth.uid);
-    var userInfo = $firebaseArray(query);
 
     $scope.user = {
       uid: currentAuth.uid,
@@ -206,6 +207,22 @@ angular.module('crystalcoachApp')
         }).then(function(query) {
           console.log("Added Crystal Response to Message History")
         })
+        $scope.userInfo.nutrition.quick[0] += parseInt(response.metrics.calories)
+        $scope.userInfo.nutrition.quick[1] += parseInt(response.metrics.carbs)
+        $scope.userInfo.nutrition.quick[2] += parseInt(response.metrics.fat)
+        $scope.userInfo.nutrition.quick[3] += parseInt(response.metrics.protein)
+        var query = rootRef.child('users').child(currentAuth.uid).child('nutrition').child('quick');
+        var userNutrition = $firebaseArray(query);
+        userNutrition[0] = $scope.userInfo.nutrition.quick[0]
+        userNutrition[1] = $scope.userInfo.nutrition.quick[1]
+        userNutrition[2] = $scope.userInfo.nutrition.quick[2]
+        userNutrition[3] = $scope.userInfo.nutrition.quick[3]
+        console.log(userNutrition);
+        userNutrition.$save(0);
+        userNutrition.$save(1);
+        userNutrition.$save(2);
+        userNutrition.$save(3);
+        $scope.updateData();
         $("canvas").fadeIn();
         $(".mic-loading").fadeOut();
         $(".mic-overlay").fadeOut();
