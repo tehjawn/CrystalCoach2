@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 // Set routes
 app.use('/', routes);
 
-app.set('port', process.env.PORT || 80);
+app.set('port', 3001 || 80);
 
 var server = app.listen(app.get('port'), function() {
   console.log('Express server listening at http://localhost:' + server.address().port);
